@@ -1,9 +1,9 @@
 ---
 const theme = Astro.props.theme || 'bourbon';
 const content = {
-  bourbon: { img1: '/assets/hero.jpg', t1: 'Ambiente Exclusivo', d1: 'Instalaciones diseñadas para tu máximo confort', img2: '/assets/service.jpg', t2: 'Mid Fade & Beard', d2: 'Perfilado de barba y degradado fino' },
-  neon: { img1: '/assets/hero_neon.jpg', t1: 'Vibra Nocturna', d1: 'Sillones ergonómicos y atmósfera synthwave', img2: '/assets/service_neon.jpg', t2: 'Líneas de Diseño', d2: 'Precisión absoluta bajo luces de neón' },
-  minimal: { img1: '/assets/hero_minimal.jpg', t1: 'Espacio Zen', d1: 'Luz natural y diseño nórdico', img2: '/assets/service_minimal.jpg', t2: 'Precisión Pura', d2: 'Técnica detallada en un entorno aséptico' }
+  bourbon: { img1: import.meta.env.BASE_URL + 'assets/hero.jpg', t1: 'Ambiente Exclusivo', d1: 'Instalaciones diseñadas para tu máximo confort', img2: import.meta.env.BASE_URL + 'assets/service.jpg', t2: 'Mid Fade & Beard', d2: 'Perfilado de barba y degradado fino' },
+  neon: { img1: import.meta.env.BASE_URL + 'assets/hero_neon.jpg', t1: 'Vibra Nocturna', d1: 'Sillones ergonómicos y atmósfera synthwave', img2: import.meta.env.BASE_URL + 'assets/service_neon.jpg', t2: 'Líneas de Diseño', d2: 'Precisión absoluta bajo luces de neón' },
+  minimal: { img1: import.meta.env.BASE_URL + 'assets/hero_minimal.jpg', t1: 'Espacio Zen', d1: 'Luz natural y diseño nórdico', img2: import.meta.env.BASE_URL + 'assets/service_minimal.jpg', t2: 'Precisión Pura', d2: 'Técnica detallada en un entorno aséptico' }
 };
 const data = content[theme as keyof typeof content];
 // Gallery.astro

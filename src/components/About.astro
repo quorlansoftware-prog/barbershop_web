@@ -2,7 +2,7 @@
 const theme = Astro.props.theme || 'bourbon';
 const content = {
   bourbon: {
-    img: '/assets/service.jpg',
+    img: import.meta.env.BASE_URL + 'assets/service.jpg',
     expNum: '1928', expText: 'Legado & Tradición',
     subheading: 'Nuestra Historia', title: 'El Arte de la Barbería Tradicional',
     p1: 'En BOURBON & BLADE rescatamos la esencia de las antiguas barberías clandestinas de los años 20. Un refugio donde el aroma a roble, el sonido de la navaja y el buen whiskey se unen.',
@@ -10,7 +10,7 @@ const content = {
     list1: 'Maestros barberos con décadas de experiencia', list2: 'Productos orgánicos de formulación propia', list3: 'Barra libre premium para clientes con reserva'
   },
   neon: {
-    img: '/assets/service_neon.jpg',
+    img: import.meta.env.BASE_URL + 'assets/service_neon.jpg',
     expNum: '1984', expText: 'Clásico & Pulcro',
     subheading: 'La Barbería Clásica', title: 'Auténtico Estilo Vintage',
     p1: 'En VINTAGE CUTS mantenemos vivo el oficio tradicional. Un espacio limpio, luminoso y con los colores emblemáticos de la verdadera barbería clásica.',
@@ -18,7 +18,7 @@ const content = {
     list1: 'Sillones de barbero vintage restaurados', list2: 'Ambiente pulcro, clásico y relajado', list3: 'Afeitados tradicionales a toalla caliente'
   },
   minimal: {
-    img: '/assets/service_minimal.jpg',
+    img: import.meta.env.BASE_URL + 'assets/service_minimal.jpg',
     expNum: '100%', expText: 'Bienestar & Paz',
     subheading: 'Nuestra Filosofía', title: 'Santuario Japandi',
     p1: 'En PURE STUDIO creemos que un corte de pelo debe ser una experiencia reparadora. Hemos diseñado un espacio estilo Japandi, cálido y minimalista, para escapar del estrés.',
