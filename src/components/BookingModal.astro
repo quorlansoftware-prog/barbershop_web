@@ -1,4 +1,23 @@
 ---
+const theme = Astro.props.theme || 'bourbon';
+const content = {
+  bourbon: { 
+    opt1: 'Corte Executive Barber (25 €)', val1: 'Corte Executive Barber',
+    opt2: 'Ritual Barba Imperial (18 €)', val2: 'Ritual Barba Imperial',
+    opt3: 'Combo Total Gentleman (38 €)', val3: 'Combo Total Gentleman'
+  },
+  neon: { 
+    opt1: 'Corte Vintage Fade (28 €)', val1: 'Corte Vintage Fade',
+    opt2: 'Ritual Retro Shave (22 €)', val2: 'Ritual Retro Shave',
+    opt3: 'Pack Midnight Rider (45 €)', val3: 'Pack Midnight Rider'
+  },
+  minimal: { 
+    opt1: 'Corte Pure Form (32 €)', val1: 'Corte Pure Form',
+    opt2: 'Ritual Zen Beard (25 €)', val2: 'Ritual Zen Beard',
+    opt3: 'Experiencia Mindfulness (50 €)', val3: 'Experiencia Mindfulness'
+  }
+};
+const data = content[theme as keyof typeof content];
 // BookingModal.astro
 ---
 <div class="modal-backdrop" id="bookingModal">
@@ -12,9 +31,9 @@
       <div class="form-group">
         <label for="serviceSelect">Servicio</label>
         <select id="serviceSelect" required>
-          <option value="Corte Executive Barber">Corte Executive Barber (25 €)</option>
-          <option value="Ritual Barba Imperial">Ritual Barba Imperial (18 €)</option>
-          <option value="Combo Total Gentleman">Combo Total Gentleman (38 €)</option>
+          <option value={data.val1}>{data.opt1}</option>
+          <option value={data.val2}>{data.opt2}</option>
+          <option value={data.val3}>{data.opt3}</option>
         </select>
       </div>
       <div class="form-row">
@@ -123,8 +142,8 @@
 .form-group select {
   width: 100%;
   padding: 12px 16px;
-  background: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--bg-alt);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   color: var(--text-main);
   font-family: inherit;

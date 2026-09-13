@@ -1,4 +1,23 @@
 ---
+const theme = Astro.props.theme || 'bourbon';
+const content = {
+  bourbon: { 
+    name1: 'BOURBON', name2: '& BLADE', 
+    desc: 'Tu barbería de confianza. Tradición, madera de roble, cortes de autor y el mejor whiskey de la ciudad.',
+    copy: 'BOURBON & BLADE'
+  },
+  neon: { 
+    name1: 'NEON', name2: 'BLADE', 
+    desc: 'La peluquería del mañana, hoy. Precisión láser, neones y estilo urbano.',
+    copy: 'NEON BLADE'
+  },
+  minimal: { 
+    name1: 'PURE', name2: 'STUDIO', 
+    desc: 'Tu estudio de confianza. Higiene, paz visual y precisión quirúrgica.',
+    copy: 'PURE STUDIO'
+  }
+};
+const data = content[theme as keyof typeof content];
 // Footer.astro
 ---
 <footer class="footer">
@@ -6,9 +25,9 @@
     <div class="footer-brand">
       <a href="#hero" class="brand-logo">
         <span class="logo-icon"><i class="fa-solid fa-scissors"></i></span>
-        <span class="logo-text">BOURBON <span class="accent-text">&amp; BLADE</span></span>
+        <span class="logo-text">{data.name1} <span class="accent-text">{data.name2}</span></span>
       </a>
-      <p>Tu barbería de confianza. Tradición, madera de roble, cortes de autor y el mejor whiskey de la ciudad.</p>
+      <p>{data.desc}</p>
     </div>
     
     <div class="footer-links">
@@ -31,7 +50,7 @@
     </div>
   </div>
   <div class="footer-bottom text-center">
-    <p>&copy; 2026 BOURBON &amp; BLADE. Todos los derechos reservados. Desarrollado para Quarlon Software.</p>
+    <p>&copy; 2026 {data.copy}. Todos los derechos reservados. Desarrollado para Quarlon Software.</p>
   </div>
 </footer>
 

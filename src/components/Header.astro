@@ -1,11 +1,18 @@
 ---
-// Header.astro
+const theme = Astro.props.theme || 'bourbon';
+
+const brandData = {
+  bourbon: { name1: 'BOURBON', name2: '& CUTS' },
+  neon: { name1: 'VINTAGE', name2: 'CUTS' },
+  minimal: { name1: 'PURE', name2: 'STUDIO' }
+};
+const brand = brandData[theme as keyof typeof brandData];
 ---
 <header class="navbar" id="navbar">
   <div class="container nav-container">
     <a href="#hero" class="brand-logo reveal-left">
       <span class="logo-icon"><i class="fa-solid fa-scissors"></i></span>
-      <span class="logo-text">BOURBON <span class="accent-text">&amp; BLADE</span></span>
+      <span class="logo-text">{brand.name1} <span class="accent-text">{brand.name2}</span></span>
     </a>
     
     <nav class="nav-menu" id="navMenu">
@@ -98,23 +105,30 @@
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
+  @media (max-width: 768px) {
   .nav-menu {
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background: var(--bg-card);
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
     flex-direction: column;
-    padding: 20px;
-    gap: 15px;
+    padding: 25px 20px;
+    gap: 20px;
+    text-align: center;
     display: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   }
   .nav-menu.active {
     display: flex;
   }
   .mobile-toggle {
     display: block;
+  }
+  #openBookingBtn {
+    display: none;
   }
 }
 </style>

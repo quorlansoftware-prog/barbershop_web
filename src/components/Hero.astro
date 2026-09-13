@@ -1,14 +1,43 @@
 ---
-// Hero.astro
+const theme = Astro.props.theme || 'bourbon';
+
+const content = {
+  bourbon: {
+    tagIcon: 'fa-crown', tagText: 'EL REFUGIO DEL CABALLERO',
+    title: 'Cortes de Autor, <br /><span class="accent-text">Aroma a Roble</span>',
+    subtitle: 'Disfruta del auténtico ritual del afeitado clásico. Sillones de cuero, toallas calientes y un bourbon de cortesía.',
+    bg: '/assets/hero.jpg',
+    f1Title: 'Corte a Navaja', f1Desc: 'La máxima expresión de un degradado perfecto y clásico.',
+    f2Title: 'Toalla y Vapor', f2Desc: 'Abertura de poros con vaporizador y esencias de sándalo.',
+    f3Title: 'Barra Privada', f3Desc: 'Selección de maltas escoceses y bourbons de Kentucky.'
+  },
+  neon: {
+    tagIcon: 'fa-cut', tagText: 'ESTILO CLÁSICO',
+    title: 'Estilo Clásico, <br /><span class="accent-text">Corte Tradicional</span>',
+    subtitle: 'El auténtico estilo de las barberías de toda la vida. Diseño limpio, colores clásicos y la máxima precisión en cada corte a navaja.',
+    bg: '/assets/hero_neon.jpg',
+    f1Title: 'Corte Clásico', f1Desc: 'Degradados impecables y peinados con auténtica esencia vintage.',
+    f2Title: 'Ritual Vintage', f2Desc: 'Afeitado tradicional con toalla caliente y lociones clásicas.',
+    f3Title: 'Cerveza & Charla', f3Desc: 'Cerveza bien fría y el ambiente genuino de una barbería tradicional.'
+  },
+  minimal: {
+    tagIcon: 'fa-leaf', tagText: 'SANTUARIO DEL BIENESTAR',
+    title: 'Relajación y <br /><span class="accent-text">Armonía</span>',
+    subtitle: 'Descubre un santuario Japandi diseñado para la calma. Un estudio de belleza premium con tonos cálidos y productos botánicos.',
+    bg: '/assets/hero_minimal.jpg',
+    f1Title: 'Diseño Estructural', f1Desc: 'Cortes arquitectónicos buscando la perfección y naturalidad.',
+    f2Title: 'Rituales Botánicos', f2Desc: 'Aromaterapia, aceites orgánicos y bienestar absoluto.',
+    f3Title: 'Spa Capilar', f3Desc: 'Tratamientos purificantes y relajación profunda garantizada.'
+  }
+};
+const data = content[theme as keyof typeof content];
 ---
 <section class="hero" id="hero">
   <div class="hero-overlay"></div>
   <div class="container hero-content">
-    <div class="badge-tag reveal-up"><i class="fa-solid fa-crown"></i> EL REFUGIO DEL CABALLERO</div>
-    <h1 class="hero-title reveal-up delay-100">Cortes de Autor, <br /><span class="accent-text">Aroma a Roble</span></h1>
-    <p class="hero-subtitle reveal-up delay-200">
-      Disfruta del auténtico ritual del afeitado clásico. Sillones de cuero, toallas calientes y un bourbon de cortesía mientras perfeccionamos tu estilo.
-    </p>
+    <div class="badge-tag reveal-up"><i class={`fa-solid ${data.tagIcon}`}></i> {data.tagText}</div>
+    <h1 class="hero-title reveal-up delay-100" set:html={data.title}></h1>
+    <p class="hero-subtitle reveal-up delay-200">{data.subtitle}</p>
     <div class="hero-buttons reveal-up delay-300">
       <button class="btn btn-primary btn-lg" id="heroBookingBtn">
         <i class="fa-solid fa-calendar-days"></i> Reservar Cita Online
@@ -22,29 +51,29 @@
       <div class="feature-card">
         <i class="fa-solid fa-scissors feature-icon"></i>
         <div>
-          <h4>Corte a Navaja</h4>
-          <p>La máxima expresión de un degradado perfecto y clásico.</p>
+          <h4>{data.f1Title}</h4>
+          <p>{data.f1Desc}</p>
         </div>
       </div>
       <div class="feature-card">
         <i class="fa-solid fa-soap feature-icon"></i>
         <div>
-          <h4>Toalla y Vapor</h4>
-          <p>Abertura de poros con vaporizador y esencias de sándalo.</p>
+          <h4>{data.f2Title}</h4>
+          <p>{data.f2Desc}</p>
         </div>
       </div>
       <div class="feature-card">
         <i class="fa-solid fa-whiskey-glass feature-icon"></i>
         <div>
-          <h4>Barra Privada</h4>
-          <p>Selección de maltas escoceses y bourbons de Kentucky.</p>
+          <h4>{data.f3Title}</h4>
+          <p>{data.f3Desc}</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<style>
+<style define:vars={{ "hero-bg": `url('${data.bg}')` }}>
 /* Hero Section */
 .hero {
   position: relative;
@@ -52,7 +81,7 @@
   display: flex;
   align-items: center;
   padding: 140px 0 80px 0;
-  background: url('/assets/hero.jpg') center/cover no-repeat;
+  background: var(--hero-bg) center/cover no-repeat;
   background-attachment: fixed; /* Parallax effect */
 }
 
@@ -62,7 +91,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(15, 16, 18, 0.8) 0%, rgba(15, 16, 18, 1) 100%);
+  background: var(--hero-overlay);
 }
 
 .hero-content {
@@ -143,5 +172,19 @@
   .hero-title {
     font-size: 2.3rem;
   }
+  .hero-buttons {
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+  .hero {
+    padding: 120px 0 60px 0;
+  }
+  .feature-card {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+}
 }
 </style>

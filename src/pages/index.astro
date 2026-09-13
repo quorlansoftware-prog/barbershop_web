@@ -1,26 +1,205 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import Services from '../components/Services.astro';
-import About from '../components/About.astro';
-import Gallery from '../components/Gallery.astro';
-import Testimonials from '../components/Testimonials.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
-import BookingModal from '../components/BookingModal.astro';
 ---
 
-<Layout title="BOURBON & BLADE | Barbería Premium y Refugio del Caballero">
-  <Header />
-  <main>
-    <Hero />
-    <Services />
-    <About />
-    <Gallery />
-    <Testimonials />
-    <Contact />
-  </main>
-  <Footer />
-  <BookingModal />
-</Layout>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quarlon Software - Barbershop Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #09090b;
+      --text: #fafafa;
+      --muted: #a1a1aa;
+      --border: #27272a;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      max-width: 800px;
+    }
+    .header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      background: linear-gradient(to right, #fff, #a1a1aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .header p {
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .card {
+      background: #18181b;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #52525b;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .card-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
+    }
+    .card-content {
+      padding: 24px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .card-desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      align-self: flex-start;
+    }
+    
+    /* Specific Theme Colors */
+    .theme-bourbon .card-title { color: #df9452; }
+    .theme-bourbon .badge { background: rgba(223, 148, 82, 0.1); color: #df9452; border: 1px solid rgba(223, 148, 82, 0.3); }
+    
+    .theme-neon .card-title { color: #00f3ff; }
+    .theme-neon .badge { background: rgba(0, 243, 255, 0.1); color: #00f3ff; border: 1px solid rgba(0, 243, 255, 0.3); }
+    
+    .theme-minimal .card-title { color: #ffffff; }
+    .theme-minimal .badge { background: rgba(255, 255, 255, 0.1); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3); }
+
+    .btn-view {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 12px;
+      background: #27272a;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.2s;
+      margin-top: auto;
+    }
+    .card:hover .btn-view {
+      background: #3f3f46;
+    }
+    
+    .watermark {
+      margin-top: 60px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  
+@media (max-width: 1024px) {
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 768px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .hero-title {
+    font-size: 3rem;
+  }
+  .card-img {
+    height: 200px;
+  }
+}
+</style>
+
+</head>
+<body>
+  
+  <div class="header">
+    <h1>Quarlon Software</h1>
+    <p>Catálogo de Plantillas Web Premium para Barberías y Salones.</p>
+  </div>
+
+  <div class="grid">
+    <!-- BOURBON -->
+    <a href="/bourbon" class="card theme-bourbon">
+      <img src="/assets/hero.jpg" alt="Bourbon Theme" class="card-img" />
+      <div class="card-content">
+        <span class="badge">Classic Premium</span>
+        <h2 class="card-title">Bourbon &amp; Blade</h2>
+        <p class="card-desc">Estética clásica de los años 20. Tonos cálidos, madera, cuero y elegancia atemporal. Ideal para barberías tradicionales de alto standing.</p>
+        <span class="btn-view">Ver Plantilla</span>
+      </div>
+    </a>
+
+    <!-- NEON -->
+    <a href="/neon" class="card theme-neon">
+      <img src="/assets/hero_neon.jpg" alt="Neon Theme" class="card-img" />
+      <div class="card-content">
+        <span class="badge">Vintage Classic</span>
+        <h2 class="card-title">Vintage Cuts</h2>
+        <p class="card-desc">El auténtico estilo de las barberías de toda la vida. Diseño limpio, colores emblemáticos (rojo, blanco y azul) y la máxima precisión en cada corte a navaja.</p>
+        <span class="btn-view">Ver Plantilla</span>
+      </div>
+    </a>
+
+    <!-- MINIMAL -->
+    <a href="/minimal" class="card theme-minimal">
+      <img src="/assets/hero_minimal.jpg" alt="Minimal Theme" class="card-img" />
+      <div class="card-content">
+        <span class="badge">Warm Japandi</span>
+        <h2 class="card-title">Pure Studio</h2>
+        <p class="card-desc">Un oasis de bienestar estilo Japandi. Tonos arena cálidos, maderas naturales y cosmética botánica. Diseñado para transmitir la máxima relajación y lujo silencioso.</p>
+        <span class="btn-view">Ver Plantilla</span>
+      </div>
+    </a>
+  </div>
+
+  <div class="watermark">
+    &copy; 2026 Quarlon Software - Portfolio Showcase
+  </div>
+
+</body>
+</html>

@@ -1,4 +1,11 @@
 ---
+const theme = Astro.props.theme || 'bourbon';
+const content = {
+  bourbon: { img1: '/assets/hero.jpg', t1: 'Ambiente Exclusivo', d1: 'Instalaciones diseñadas para tu máximo confort', img2: '/assets/service.jpg', t2: 'Mid Fade & Beard', d2: 'Perfilado de barba y degradado fino' },
+  neon: { img1: '/assets/hero_neon.jpg', t1: 'Vibra Nocturna', d1: 'Sillones ergonómicos y atmósfera synthwave', img2: '/assets/service_neon.jpg', t2: 'Líneas de Diseño', d2: 'Precisión absoluta bajo luces de neón' },
+  minimal: { img1: '/assets/hero_minimal.jpg', t1: 'Espacio Zen', d1: 'Luz natural y diseño nórdico', img2: '/assets/service_minimal.jpg', t2: 'Precisión Pura', d2: 'Técnica detallada en un entorno aséptico' }
+};
+const data = content[theme as keyof typeof content];
 // Gallery.astro
 ---
 <section class="gallery section-padding" id="gallery">
@@ -11,17 +18,17 @@
 
     <div class="gallery-grid">
       <div class="gallery-item main-item reveal-scale delay-100">
-        <img src="/assets/hero.jpg" alt="Interior Barbería" />
+        <img src={data.img1} alt="Interior Barbería" />
         <div class="gallery-overlay">
-          <h4>Ambiente Exclusivo</h4>
-          <p>Instalaciones diseñadas para tu máximo confort</p>
+          <h4>{data.t1}</h4>
+          <p>{data.d1}</p>
         </div>
       </div>
       <div class="gallery-item reveal-scale delay-200">
-        <img src="/assets/service.jpg" alt="Corte Skin Fade" />
+        <img src={data.img2} alt="Corte" />
         <div class="gallery-overlay">
-          <h4>Mid Fade &amp; Beard</h4>
-          <p>Perfilado de barba y degradado fino</p>
+          <h4>{data.t2}</h4>
+          <p>{data.d2}</p>
         </div>
       </div>
     </div>

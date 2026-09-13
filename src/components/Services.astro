@@ -1,5 +1,23 @@
 ---
-// Services.astro
+const theme = Astro.props.theme || 'bourbon';
+const content = {
+  bourbon: {
+    s1Title: 'Corte "The Kentucky Fade"', s1Desc: 'El corte insignia de la casa. Degradado impecable, lavado con champú de cedro, fijación en mate.', s1Price: '28 €',
+    s2Title: 'Ritual "Oak & Razor"', s2Desc: 'Esculpido de barba magistral, aplicación de aceite de almendras y afeitado tradicional a navaja.', s2Price: '22 €',
+    s3Title: 'Experiencia "Bourbon & Blade"', s3Desc: 'Corte Kentucky + Ritual Oak & Razor. La experiencia completa con masaje capilar y degustación.', s3Price: '45 €'
+  },
+  neon: {
+    s1Title: 'Corte "Vintage Fade"', s1Desc: 'Degradado perfecto con estilo clásico. Incluye lavado y estilismo final para la noche.', s1Price: '28 €',
+    s2Title: 'Ritual "Retro Shave"', s2Desc: 'Afeitado con toalla caliente, masaje facial y aftershave clásico de la vieja escuela.', s2Price: '22 €',
+    s3Title: 'Pack "Midnight Rider"', s3Desc: 'Corte Neon Fade + Ritual Retro Shave + Bebida de cortesía para arrancar el fin de semana.', s3Price: '45 €'
+  },
+  minimal: {
+    s1Title: 'Corte "Pure Form"', s1Desc: 'Equilibrio y proporción. Incluye lavado con agua purificada e hidratación orgánica.', s1Price: '32 €',
+    s2Title: 'Ritual "Zen Beard"', s2Desc: 'Tratamiento facial con esencias botánicas, recorte preciso y aceite de argán.', s2Price: '25 €',
+    s3Title: 'Experiencia "Mindfulness"', s3Desc: 'Corte Pure Form, Ritual Zen Beard y masaje craneal con arcilla purificante. Relajación total.', s3Price: '50 €'
+  }
+};
+const data = content[theme as keyof typeof content];
 ---
 <section class="services section-padding" id="services">
   <div class="container">
@@ -14,37 +32,37 @@
       <div class="service-card highlight reveal-up delay-100">
         <div class="service-badge">Más Popular</div>
         <div class="service-icon"><i class="fa-solid fa-scissors"></i></div>
-        <h3 class="service-name">Corte "The Kentucky Fade"</h3>
-        <p class="service-desc">El corte insignia de la casa. Degradado impecable, lavado con champú de cedro, fijación en mate y un vaso de bourbon.</p>
+        <h3 class="service-name">{data.s1Title}</h3>
+        <p class="service-desc">{data.s1Desc}</p>
         <div class="service-meta">
-          <span class="service-price">28 €</span>
+          <span class="service-price">{data.s1Price}</span>
           <span class="service-time"><i class="fa-regular fa-clock"></i> 45 min</span>
         </div>
-        <button class="btn btn-primary btn-block book-service-btn" data-service="Corte Executive Barber">Reservar</button>
+        <button class="btn btn-primary btn-block book-service-btn" data-service={data.s1Title}>Reservar</button>
       </div>
 
       <!-- Service Card 2 -->
       <div class="service-card reveal-up delay-200">
         <div class="service-icon"><i class="fa-solid fa-razor"></i></div>
-        <h3 class="service-name">Ritual "Oak & Razor"</h3>
-        <p class="service-desc">Esculpido de barba magistral, aplicación de aceite de almendras y afeitado tradicional a navaja libre con doble toalla caliente.</p>
+        <h3 class="service-name">{data.s2Title}</h3>
+        <p class="service-desc">{data.s2Desc}</p>
         <div class="service-meta">
-          <span class="service-price">22 €</span>
+          <span class="service-price">{data.s2Price}</span>
           <span class="service-time"><i class="fa-regular fa-clock"></i> 30 min</span>
         </div>
-        <button class="btn btn-outline btn-block book-service-btn" data-service="Ritual Barba Imperial">Reservar</button>
+        <button class="btn btn-outline btn-block book-service-btn" data-service={data.s2Title}>Reservar</button>
       </div>
 
       <!-- Service Card 3 -->
       <div class="service-card reveal-up delay-300">
         <div class="service-icon"><i class="fa-solid fa-gem"></i></div>
-        <h3 class="service-name">Experiencia "Bourbon & Blade"</h3>
-        <p class="service-desc">Corte Kentucky + Ritual Oak & Razor. La experiencia completa con masaje capilar, cera templada para cejas y degustación reserva.</p>
+        <h3 class="service-name">{data.s3Title}</h3>
+        <p class="service-desc">{data.s3Desc}</p>
         <div class="service-meta">
-          <span class="service-price">45 €</span>
+          <span class="service-price">{data.s3Price}</span>
           <span class="service-time"><i class="fa-regular fa-clock"></i> 75 min</span>
         </div>
-        <button class="btn btn-outline btn-block book-service-btn" data-service="Experiencia Bourbon & Blade">Reservar</button>
+        <button class="btn btn-outline btn-block book-service-btn" data-service={data.s3Title}>Reservar</button>
       </div>
     </div>
   </div>
@@ -55,7 +73,7 @@
   background: var(--bg-card);
   border-radius: var(--radius-md);
   padding: 35px 30px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
   position: relative;
   transition: var(--transition-smooth);
   display: flex;
@@ -70,7 +88,7 @@
 
 .service-card.highlight {
   border-color: var(--primary-accent);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, var(--bg-card) 100%);
+  background: var(--bg-card-hover);
 }
 
 .service-badge {
@@ -110,7 +128,7 @@
   align-items: center;
   margin-bottom: 25px;
   padding-top: 15px;
-  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  border-top: 1px dashed var(--border-color);
 }
 
 .service-price {

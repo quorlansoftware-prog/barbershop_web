@@ -1,29 +1,56 @@
 ---
-// About.astro
+const theme = Astro.props.theme || 'bourbon';
+const content = {
+  bourbon: {
+    img: '/assets/service.jpg',
+    expNum: '1928', expText: 'Legado & Tradición',
+    subheading: 'Nuestra Historia', title: 'El Arte de la Barbería Tradicional',
+    p1: 'En BOURBON & BLADE rescatamos la esencia de las antiguas barberías clandestinas de los años 20. Un refugio donde el aroma a roble, el sonido de la navaja y el buen whiskey se unen.',
+    p2: 'Cada caballero recibe un trato personalizado en nuestros sillones de cuero genuino restaurados. Trabajamos con ungüentos artesanales y aceites esenciales de cedro.',
+    list1: 'Maestros barberos con décadas de experiencia', list2: 'Productos orgánicos de formulación propia', list3: 'Barra libre premium para clientes con reserva'
+  },
+  neon: {
+    img: '/assets/service_neon.jpg',
+    expNum: '1984', expText: 'Clásico & Pulcro',
+    subheading: 'La Barbería Clásica', title: 'Auténtico Estilo Vintage',
+    p1: 'En VINTAGE CUTS mantenemos vivo el oficio tradicional. Un espacio limpio, luminoso y con los colores emblemáticos de la verdadera barbería clásica.',
+    p2: 'Cortes a navaja y arreglos de barba impecables, rodeados de una estética gráfica vintage que rinde homenaje a los maestros barberos de antaño.',
+    list1: 'Sillones de barbero vintage restaurados', list2: 'Ambiente pulcro, clásico y relajado', list3: 'Afeitados tradicionales a toalla caliente'
+  },
+  minimal: {
+    img: '/assets/service_minimal.jpg',
+    expNum: '100%', expText: 'Bienestar & Paz',
+    subheading: 'Nuestra Filosofía', title: 'Santuario Japandi',
+    p1: 'En PURE STUDIO creemos que un corte de pelo debe ser una experiencia reparadora. Hemos diseñado un espacio estilo Japandi, cálido y minimalista, para escapar del estrés.',
+    p2: 'Disfruta de luz natural, tonos arena y materiales nobles. Nuestro enfoque clínico garantiza higiene absoluta, mientras nuestros productos botánicos cuidan de tu piel y cabello.',
+    list1: 'Espacio cálido, relajante y libre de ruido', list2: 'Cosmética capilar 100% vegana y botánica', list3: 'Estándares de higiene y pureza premium'
+  }
+};
+const data = content[theme as keyof typeof content];
 ---
 <section class="about section-padding alt-bg" id="about">
   <div class="container grid-2 align-center">
     <div class="about-img-wrapper reveal-left">
-      <img src="/assets/service.jpg" alt="Barbero profesional trabajando" class="img-responsive rounded-img shadow-lg" />
+      <img src={data.img} alt="Barbero profesional trabajando" class="img-responsive rounded-img shadow-lg" />
       <div class="experience-badge">
-        <span class="exp-number">1928</span>
-        <span class="exp-text">Legado &amp; Tradición</span>
+        <span class="exp-number">{data.expNum}</span>
+        <span class="exp-text">{data.expText}</span>
       </div>
     </div>
     <div class="about-content reveal-right">
-      <span class="subheading">Nuestra Historia</span>
-      <h2 class="section-title">El Arte de la Barbería Tradicional</h2>
+      <span class="subheading">{data.subheading}</span>
+      <h2 class="section-title">{data.title}</h2>
       <p class="lead-text" style="font-size: 1.1rem; margin-bottom: 15px;">
-        En BOURBON &amp; BLADE rescatamos la esencia de las antiguas barberías clandestinas de los años 20. Un refugio donde el aroma a roble, el sonido de la navaja y el buen whiskey se unen.
+        {data.p1}
       </p>
       <p style="margin-bottom: 25px; color: var(--text-muted);">
-        Cada caballero recibe un trato personalizado en nuestros sillones de cuero genuino restaurados. Trabajamos con ungüentos artesanales, aceites esenciales de cedro y las mejores maltas para hacer de tu visita una experiencia inolvidable.
+        {data.p2}
       </p>
 
       <ul class="check-list">
-        <li><i class="fa-solid fa-circle-check"></i> Maestros barberos con décadas de experiencia</li>
-        <li><i class="fa-solid fa-circle-check"></i> Productos orgánicos de formulación propia (notas de sándalo y bourbon)</li>
-        <li><i class="fa-solid fa-circle-check"></i> Barra libre premium para clientes con reserva</li>
+        <li><i class="fa-solid fa-circle-check"></i> {data.list1}</li>
+        <li><i class="fa-solid fa-circle-check"></i> {data.list2}</li>
+        <li><i class="fa-solid fa-circle-check"></i> {data.list3}</li>
       </ul>
     </div>
   </div>
