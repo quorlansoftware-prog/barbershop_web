@@ -1,0 +1,112 @@
+---
+// Footer.astro
+---
+<footer class="footer">
+  <div class="container footer-content reveal-up">
+    <div class="footer-brand">
+      <a href="#hero" class="brand-logo">
+        <span class="logo-icon"><i class="fa-solid fa-scissors"></i></span>
+        <span class="logo-text">BOURBON <span class="accent-text">&amp; BLADE</span></span>
+      </a>
+      <p>Tu barbería de confianza. Tradición, madera de roble, cortes de autor y el mejor whiskey de la ciudad.</p>
+    </div>
+    
+    <div class="footer-links">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="#hero">Inicio</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#about">Nosotros</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-social">
+      <h4>Síguenos</h4>
+      <div class="social-icons">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom text-center">
+    <p>&copy; 2026 BOURBON &amp; BLADE. Todos los derechos reservados. Desarrollado para Quarlon Software.</p>
+  </div>
+</footer>
+
+<style>
+.footer {
+  background-color: var(--bg-dark);
+  padding: 60px 0 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-brand p {
+  margin-top: 15px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  max-width: 350px;
+}
+
+.footer-links ul {
+  list-style: none;
+  margin-top: 15px;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+}
+
+.footer-links a:hover {
+  color: var(--primary-accent);
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  transition: var(--transition-fast);
+}
+
+.social-icons a:hover {
+  background: var(--primary-accent);
+  color: var(--bg-dark);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 20px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

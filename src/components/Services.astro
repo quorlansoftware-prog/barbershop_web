@@ -1,0 +1,127 @@
+---
+// Services.astro
+---
+<section class="services section-padding" id="services">
+  <div class="container">
+    <div class="section-header text-center reveal-up">
+      <span class="subheading">Nuestros Servicios</span>
+      <h2 class="section-title">Precios &amp; Menú de Experiencias</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="services-grid grid-3">
+      <!-- Service Card 1 -->
+      <div class="service-card highlight reveal-up delay-100">
+        <div class="service-badge">Más Popular</div>
+        <div class="service-icon"><i class="fa-solid fa-scissors"></i></div>
+        <h3 class="service-name">Corte "The Kentucky Fade"</h3>
+        <p class="service-desc">El corte insignia de la casa. Degradado impecable, lavado con champú de cedro, fijación en mate y un vaso de bourbon.</p>
+        <div class="service-meta">
+          <span class="service-price">28 €</span>
+          <span class="service-time"><i class="fa-regular fa-clock"></i> 45 min</span>
+        </div>
+        <button class="btn btn-primary btn-block book-service-btn" data-service="Corte Executive Barber">Reservar</button>
+      </div>
+
+      <!-- Service Card 2 -->
+      <div class="service-card reveal-up delay-200">
+        <div class="service-icon"><i class="fa-solid fa-razor"></i></div>
+        <h3 class="service-name">Ritual "Oak & Razor"</h3>
+        <p class="service-desc">Esculpido de barba magistral, aplicación de aceite de almendras y afeitado tradicional a navaja libre con doble toalla caliente.</p>
+        <div class="service-meta">
+          <span class="service-price">22 €</span>
+          <span class="service-time"><i class="fa-regular fa-clock"></i> 30 min</span>
+        </div>
+        <button class="btn btn-outline btn-block book-service-btn" data-service="Ritual Barba Imperial">Reservar</button>
+      </div>
+
+      <!-- Service Card 3 -->
+      <div class="service-card reveal-up delay-300">
+        <div class="service-icon"><i class="fa-solid fa-gem"></i></div>
+        <h3 class="service-name">Experiencia "Bourbon & Blade"</h3>
+        <p class="service-desc">Corte Kentucky + Ritual Oak & Razor. La experiencia completa con masaje capilar, cera templada para cejas y degustación reserva.</p>
+        <div class="service-meta">
+          <span class="service-price">45 €</span>
+          <span class="service-time"><i class="fa-regular fa-clock"></i> 75 min</span>
+        </div>
+        <button class="btn btn-outline btn-block book-service-btn" data-service="Experiencia Bourbon & Blade">Reservar</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.service-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 35px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--border-color);
+  box-shadow: var(--shadow-glow);
+}
+
+.service-card.highlight {
+  border-color: var(--primary-accent);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, var(--bg-card) 100%);
+}
+
+.service-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: var(--primary-accent);
+  color: var(--bg-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+.service-icon {
+  font-size: 2rem;
+  color: var(--primary-accent);
+  margin-bottom: 20px;
+}
+
+.service-name {
+  font-size: 1.3rem;
+  margin-bottom: 12px;
+}
+
+.service-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 25px;
+  flex-grow: 1;
+}
+
+.service-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-top: 15px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.service-price {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-accent);
+  font-family: 'Cinzel', serif;
+}
+
+.service-time {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+</style>

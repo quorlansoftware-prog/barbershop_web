@@ -1,0 +1,146 @@
+---
+// Header.astro
+---
+<header class="navbar" id="navbar">
+  <div class="container nav-container">
+    <a href="#hero" class="brand-logo reveal-left">
+      <span class="logo-icon"><i class="fa-solid fa-scissors"></i></span>
+      <span class="logo-text">BOURBON <span class="accent-text">&amp; BLADE</span></span>
+    </a>
+    
+    <nav class="nav-menu" id="navMenu">
+      <a href="#hero" class="nav-link active">Inicio</a>
+      <a href="#services" class="nav-link">Servicios</a>
+      <a href="#about" class="nav-link">Nosotros</a>
+      <a href="#gallery" class="nav-link">Galería</a>
+      <a href="#testimonials" class="nav-link">Reseñas</a>
+      <a href="#contact" class="nav-link">Contacto</a>
+    </nav>
+
+    <div class="nav-actions reveal-right">
+      <button class="btn btn-primary" id="openBookingBtn">
+        <i class="fa-regular fa-calendar-check"></i> Reservar Cita
+      </button>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Menu Toggle">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+/* Header & Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: var(--transition-smooth);
+}
+
+.navbar.scrolled {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+  padding: 14px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  color: var(--primary-accent);
+}
+
+.nav-menu {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--primary-accent);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-main);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-card);
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    display: none;
+  }
+  .nav-menu.active {
+    display: flex;
+  }
+  .mobile-toggle {
+    display: block;
+  }
+}
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        navbar?.classList.add('scrolled');
+      } else {
+        navbar?.classList.remove('scrolled');
+      }
+    });
+
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    mobileToggle?.addEventListener('click', () => {
+      navMenu?.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu?.classList.remove('active');
+      });
+    });
+  });
+</script>

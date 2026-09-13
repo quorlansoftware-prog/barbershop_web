@@ -1,0 +1,110 @@
+---
+// Testimonials.astro
+---
+<section class="testimonials section-padding alt-bg" id="testimonials">
+  <div class="container">
+    <div class="section-header text-center reveal-up">
+      <span class="subheading">Opiniones</span>
+      <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="testimonials-grid grid-3">
+      <div class="testimonial-card reveal-up delay-100">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="testimonial-text">"He estado en barberías por todo el mundo, pero el trato aquí es de otro nivel. El aroma a madera, el bourbon en su punto y un corte a navaja como los de antes."</p>
+        <div class="client-info">
+          <div class="client-avatar">JT</div>
+          <div>
+            <h5>James T. Sullivan</h5>
+            <span>Socio del Club</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal-up delay-200">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="testimonial-text">"Pura artesanía. No es solo venir a cortarse el pelo, es venir a desconectar en un santuario masculino. Recomendadísimo el Ritual Oak & Razor."</p>
+        <div class="client-info">
+          <div class="client-avatar">MH</div>
+          <div>
+            <h5>Marcus Harrington</h5>
+            <span>Caballero Verificado</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card reveal-up delay-300">
+        <div class="stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="testimonial-text">"El ambiente te transporta a los años 20. Los barberos visten impecables, la música es excelente y la atención al detalle con la barba es inmejorable."</p>
+        <div class="client-info">
+          <div class="client-avatar">VR</div>
+          <div>
+            <h5>Victor R. Thorne</h5>
+            <span>Miembro Fundador</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.testimonial-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  padding: 30px;
+  border: 1px solid var(--glass-border);
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.stars {
+  color: var(--primary-accent);
+  margin-bottom: 15px;
+}
+
+.testimonial-text {
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  margin-bottom: 20px;
+}
+
+.client-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.client-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--primary-accent);
+  color: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.client-info h5 {
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.client-info span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+</style>

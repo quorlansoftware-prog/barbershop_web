@@ -1,0 +1,84 @@
+---
+// About.astro
+---
+<section class="about section-padding alt-bg" id="about">
+  <div class="container grid-2 align-center">
+    <div class="about-img-wrapper reveal-left">
+      <img src="/assets/service.jpg" alt="Barbero profesional trabajando" class="img-responsive rounded-img shadow-lg" />
+      <div class="experience-badge">
+        <span class="exp-number">1928</span>
+        <span class="exp-text">Legado &amp; Tradición</span>
+      </div>
+    </div>
+    <div class="about-content reveal-right">
+      <span class="subheading">Nuestra Historia</span>
+      <h2 class="section-title">El Arte de la Barbería Tradicional</h2>
+      <p class="lead-text" style="font-size: 1.1rem; margin-bottom: 15px;">
+        En BOURBON &amp; BLADE rescatamos la esencia de las antiguas barberías clandestinas de los años 20. Un refugio donde el aroma a roble, el sonido de la navaja y el buen whiskey se unen.
+      </p>
+      <p style="margin-bottom: 25px; color: var(--text-muted);">
+        Cada caballero recibe un trato personalizado en nuestros sillones de cuero genuino restaurados. Trabajamos con ungüentos artesanales, aceites esenciales de cedro y las mejores maltas para hacer de tu visita una experiencia inolvidable.
+      </p>
+
+      <ul class="check-list">
+        <li><i class="fa-solid fa-circle-check"></i> Maestros barberos con décadas de experiencia</li>
+        <li><i class="fa-solid fa-circle-check"></i> Productos orgánicos de formulación propia (notas de sándalo y bourbon)</li>
+        <li><i class="fa-solid fa-circle-check"></i> Barra libre premium para clientes con reserva</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+.about-img-wrapper {
+  position: relative;
+}
+
+.rounded-img {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.experience-badge {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: var(--primary-accent);
+  color: var(--bg-dark);
+  padding: 20px 25px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.exp-number {
+  font-size: 2rem;
+  font-weight: 900;
+  display: block;
+  line-height: 1;
+  font-family: 'Cinzel', serif;
+}
+
+.exp-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.check-list {
+  list-style: none;
+  margin-top: 20px;
+}
+
+.check-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.check-list i {
+  color: var(--primary-accent);
+}
+</style>
