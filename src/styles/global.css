@@ -290,6 +290,25 @@ img {
   }
 }
 
+/* La identidad visual pertenece a esta web; la librería solo expone awc-*. */
+body {
+  --awc-bg: var(--bg-dark);
+  --awc-surface: var(--bg-card);
+  --awc-text: var(--text-main);
+  --awc-muted: var(--text-muted);
+  --awc-accent: var(--primary-accent);
+  --awc-border: var(--border-color);
+  --awc-radius: var(--radius-md);
+}
+
+.awc-header {
+  background: var(--nav-bg);
+}
+
+.awc-hero::after {
+  background: var(--hero-overlay);
+}
+
 
 /* Advanced Responsive */
 @media (max-width: 768px) {

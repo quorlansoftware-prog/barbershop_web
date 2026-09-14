@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '../styles/components.css';
 
 interface Props {
   title: string;
@@ -51,8 +52,8 @@ const { title, theme = 'bourbon' } = Astro.props;
         });
       }, observerOptions);
 
-      // Observar todos los elementos con clases reveal-*
-      document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+      // Los componentes exponen hooks neutrales; esta web decide la animación.
+      document.querySelectorAll('[data-awc-reveal], .reveal-up, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
         observer.observe(el);
       });
     });
