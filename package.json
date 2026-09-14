@@ -8,10 +8,12 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "test": "node --test tests/*.spec.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@quorlansoftware/astro-web-components": "file:../astro-web-components",
     "astro": "^7.3.2"
   },
   "allowScripts": {
