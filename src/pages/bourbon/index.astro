@@ -1,8 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import BarbershopPage from '../../components/BarbershopPage.astro';
+import SiteRenderer from '@quorlansoftware/astro-web-components/SiteRenderer.astro';
+import siteConfig from '../../content/site.json';
+const page = siteConfig.pages.find((item) => item.id === 'bourbon');
 ---
 
-<Layout title="BOURBON & BLADE | Barbería Premium y Refugio del Caballero" theme="bourbon">
-  <BarbershopPage theme="bourbon" />
+<Layout title={page.metadata.title} description={page.metadata.description} theme="bourbon" locale="es" canonical="/barbershop_web/bourbon/" alternates={[{ locale: 'es', href: '/barbershop_web/bourbon/' }, { locale: 'en', href: '/barbershop_web/en/bourbon/' }]}>
+  <SiteRenderer config={siteConfig} pageId="bourbon" locale="es" />
 </Layout>

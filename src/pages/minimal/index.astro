@@ -1,8 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import BarbershopPage from '../../components/BarbershopPage.astro';
+import SiteRenderer from '@quorlansoftware/astro-web-components/SiteRenderer.astro';
+import siteConfig from '../../content/site.json';
+const page = siteConfig.pages.find((item) => item.id === 'minimal');
 ---
 
-<Layout title="PURE STUDIO | Clínica Capilar y Barbería" theme="minimal">
-  <BarbershopPage theme="minimal" />
+<Layout title={page.metadata.title} description={page.metadata.description} theme="minimal" locale="es" canonical="/barbershop_web/minimal/" alternates={[{ locale: 'es', href: '/barbershop_web/minimal/' }, { locale: 'en', href: '/barbershop_web/en/minimal/' }]}>
+  <SiteRenderer config={siteConfig} pageId="minimal" locale="es" />
 </Layout>

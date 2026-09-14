@@ -1,0 +1,11 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import SiteRenderer from '@quorlansoftware/astro-web-components/SiteRenderer.astro';
+import siteConfig from '../../../content/site.json';
+const page = siteConfig.pages.find((item) => item.id === 'minimal');
+const metadata = { ...page.metadata, ...(page.metadata.translations?.en ?? {}) };
+---
+
+<Layout title={metadata.title} description={metadata.description} theme="minimal" locale="en" canonical="/barbershop_web/en/minimal/" alternates={[{ locale: 'es', href: '/barbershop_web/minimal/' }, { locale: 'en', href: '/barbershop_web/en/minimal/' }]}>
+  <SiteRenderer config={siteConfig} pageId="minimal" locale="en" />
+</Layout>

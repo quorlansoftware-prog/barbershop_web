@@ -3,19 +3,18 @@ import { access, readFile } from 'node:fs/promises';
 import { test } from 'node:test';
 
 const root = new URL('../', import.meta.url);
-const names = ['Header', 'Hero', 'Services', 'About', 'Gallery', 'Testimonials', 'Contact', 'Footer', 'BookingModal'];
 
-test('the site consumes the shared package', async () => {
+test('the site consumes the published shared package and SiteRenderer', async () => {
   const pkg = JSON.parse(await readFile(new URL('package.json', root), 'utf8'));
   assert.match(pkg.dependencies['@quorlansoftware/astro-web-components'], /^git\+https:\/\/github\.com\/quorlansoftware-prog\/astro-web-components\.git#main$/);
-  const page = await readFile(new URL('src/components/BarbershopPage.astro', root), 'utf8');
-  for (const name of names) assert.match(page, new RegExp(`astro-web-components/${name}\\.astro`));
+  const page = await readFile(new URL('src/pages/bourbon/index.astro', root), 'utf8');
+  assert.match(page, /astro-web-components\/SiteRenderer\.astro/);
+  assert.match(page, /site\.json/);
 });
 
-test('local section components have been removed', async () => {
-  for (const name of names) {
-    await assert.rejects(access(new URL(`src/components/${name}.astro`, root)));
-  }
+test('local section components and fixed theme composition have been removed', async () => {
+  await assert.rejects(access(new URL('src/components/BarbershopPage.astro', root)));
+  await assert.rejects(access(new URL('src/data/themes.ts', root)));
 });
 
 test('the consumer owns component styling and reveal animations', async () => {
@@ -26,11 +25,8 @@ test('the consumer owns component styling and reveal animations', async () => {
   assert.match(layout, /\[data-awc-reveal\]/);
   assert.match(styles, /font-family:\s*'Cinzel'/);
   assert.match(styles, /\.awc-header\[data-awc-scrolled\]/);
-  assert.match(styles, /\[data-awc-reveal="up"\]/);
   assert.match(styles, /\.awc-hero\s*\{[^}]*text-align:\s*left/s);
-  const page = await readFile(new URL('src/components/BarbershopPage.astro', root), 'utf8');
-  assert.match(page, /slot="title"/);
-  assert.match(page, /fa-scissors/);
+  assert.match(styles, /awc-language-switcher/);
 });
 
 test('the consumer styles the booking dialog and active navigation state', async () => {
