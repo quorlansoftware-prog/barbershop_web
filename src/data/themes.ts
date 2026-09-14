@@ -9,7 +9,7 @@ const commonLinks = [
 export const themes = {
   bourbon: {
     title: 'BOURBON & BLADE | Barbería Premium y Refugio del Caballero', brand: 'BOURBON & CUTS', links: commonLinks,
-    hero: { eyebrow: 'EL REFUGIO DEL CABALLERO', title: 'Cortes de Autor, Aroma a Roble', description: 'Disfruta del auténtico ritual del afeitado clásico. Sillones de cuero, toallas calientes y un bourbon de cortesía.', image: 'assets/hero.jpg' },
+    hero: { eyebrow: 'EL REFUGIO DEL CABALLERO', title: 'Cortes de Autor,', titleAccent: 'Aroma a Roble', description: 'Disfruta del auténtico ritual del afeitado clásico. Sillones de cuero, toallas calientes y un bourbon de cortesía.', image: 'assets/hero.jpg' },
     services: [
       { id: 'kentucky-fade', name: 'Corte “The Kentucky Fade”', description: 'Degradado impecable, lavado con champú de cedro y fijación mate.', price: '28 €', icon: '✂' },
       { id: 'oak-razor', name: 'Ritual “Oak & Razor”', description: 'Esculpido de barba, aceite de almendras y afeitado tradicional.', price: '22 €', icon: '◆' },
@@ -23,7 +23,7 @@ export const themes = {
   },
   neon: {
     title: 'VINTAGE CUTS | Barbería Clásica', brand: 'VINTAGE CUTS', links: commonLinks,
-    hero: { eyebrow: 'ESTILO CLÁSICO', title: 'Estilo Clásico, Corte Tradicional', description: 'El auténtico estilo de las barberías de toda la vida y máxima precisión en cada corte.', image: 'assets/hero_neon.jpg' },
+    hero: { eyebrow: 'ESTILO CLÁSICO', title: 'Estilo Clásico,', titleAccent: 'Corte Tradicional', description: 'El auténtico estilo de las barberías de toda la vida y máxima precisión en cada corte.', image: 'assets/hero_neon.jpg' },
     services: [{ id: 'vintage-fade', name: 'Corte “Vintage Fade”', description: 'Degradado perfecto con lavado y estilismo final.', price: '28 €', icon: '✂' }, { id: 'retro-shave', name: 'Ritual “Retro Shave”', description: 'Afeitado con toalla caliente, masaje facial y aftershave.', price: '22 €', icon: '◆' }, { id: 'midnight-rider', name: 'Pack “Midnight Rider”', description: 'Corte, afeitado y bebida de cortesía.', price: '45 €', icon: '◇' }],
     about: { eyebrow: 'La Barbería Clásica', title: 'Auténtico Estilo Vintage', paragraphs: ['Mantenemos vivo el oficio tradicional en un espacio limpio y luminoso.', 'Cortes a navaja y arreglos de barba impecables.'], points: ['Sillones vintage restaurados', 'Ambiente clásico y relajado', 'Afeitados con toalla caliente'], image: 'assets/service_neon.jpg', badgeValue: '1984', badgeLabel: 'Clásico & Pulcro' },
     gallery: [{ src: 'assets/hero_neon.jpg', alt: 'Interior vintage', caption: 'Ambiente clásico' }, { src: 'assets/service_neon.jpg', alt: 'Corte clásico', caption: 'Líneas de diseño' }],
@@ -33,7 +33,7 @@ export const themes = {
   },
   minimal: {
     title: 'PURE STUDIO | Barbería Japandi', brand: 'PURE STUDIO', links: commonLinks,
-    hero: { eyebrow: 'SANTUARIO DEL BIENESTAR', title: 'Relajación y Armonía', description: 'Un santuario Japandi diseñado para la calma, con tonos cálidos y productos botánicos.', image: 'assets/hero_minimal.jpg' },
+    hero: { eyebrow: 'SANTUARIO DEL BIENESTAR', title: 'Relajación y', titleAccent: 'Armonía', description: 'Un santuario Japandi diseñado para la calma, con tonos cálidos y productos botánicos.', image: 'assets/hero_minimal.jpg' },
     services: [{ id: 'pure-form', name: 'Corte “Pure Form”', description: 'Equilibrio, lavado con agua purificada e hidratación orgánica.', price: '32 €', icon: '✂' }, { id: 'zen-beard', name: 'Ritual “Zen Beard”', description: 'Esencias botánicas, recorte preciso y aceite de argán.', price: '25 €', icon: '◆' }, { id: 'mindfulness', name: 'Experiencia “Mindfulness”', description: 'Corte, barba y masaje craneal purificante.', price: '50 €', icon: '◇' }],
     about: { eyebrow: 'Nuestra Filosofía', title: 'Santuario Japandi', paragraphs: ['Creemos que un corte debe ser una experiencia reparadora.', 'La luz natural, los tonos arena y los materiales nobles invitan a desconectar.'], points: ['Espacio cálido y libre de ruido', 'Cosmética vegana y botánica', 'Higiene premium'], image: 'assets/service_minimal.jpg', badgeValue: '100%', badgeLabel: 'Bienestar & Paz' },
     gallery: [{ src: 'assets/hero_minimal.jpg', alt: 'Espacio zen', caption: 'Luz natural y diseño nórdico' }, { src: 'assets/service_minimal.jpg', alt: 'Corte detallado', caption: 'Precisión pura' }],
