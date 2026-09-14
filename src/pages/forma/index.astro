@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteRenderer from '@quorlansoftware/astro-web-components/SiteRenderer.astro';
+import siteConfig from '../../content/site.json';
+const page = siteConfig.pages.find((item) => item.id === 'forma');
+---
+
+<Layout title={page.metadata.title} description={page.metadata.description} theme="forma" locale="es" canonical="/portfolio/forma/" alternates={[{ locale: 'es', href: '/portfolio/forma/' }, { locale: 'en', href: '/portfolio/en/forma/' }]}>
+  <SiteRenderer config={siteConfig} pageId="forma" locale="es" />
+</Layout>

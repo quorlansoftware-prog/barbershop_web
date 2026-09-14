@@ -1,10 +1,17 @@
 ---
 import '../styles/global.css';
 import '../styles/components.css';
+import '../../design-library/presets/bourbon-editorial/tokens.css';
+import '../../design-library/presets/bourbon-editorial/theme.css';
+import '../../design-library/presets/pure-beauty/tokens.css';
+import '../../design-library/presets/pure-beauty/theme.css';
+import '../../design-library/presets/forma-pilates/tokens.css';
+import '../../design-library/presets/forma-pilates/theme.css';
+import { getThemeClass, getThemePreset } from '../themes/registry.mjs';
 
 interface Props {
   title: string;
-  theme: 'bourbon' | 'neon' | 'minimal';
+  theme: 'bourbon' | 'pure' | 'forma' | 'minimal' | 'neon' | string;
   description?: string;
   locale?: string;
   canonical?: string;
@@ -12,10 +19,12 @@ interface Props {
 }
 
 const { title, theme = 'bourbon', description, locale = 'es', canonical, alternates = [] } = Astro.props;
+const themeClass = getThemeClass(theme);
+const themePreset = getThemePreset(theme);
 ---
 
 <!DOCTYPE html>
-<html lang={locale}>
+<html lang={locale} class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,16 +33,17 @@ const { title, theme = 'bourbon', description, locale = 'es', canonical, alterna
   {canonical && <link rel="canonical" href={canonical} />}
   {alternates.map((alternate) => <link rel="alternate" hreflang={alternate.locale} href={alternate.href} />)}
   
-  <!-- Fonts: Cinzel for headings, Plus Jakarta Sans for body -->
+  <!-- Portfolio fonts: each theme selects its heading family through CSS tokens. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   
   <!-- FontAwesome Icons -->
   <!-- Preload fonts to avoid FOUT -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script is:inline>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
-<body class={`theme-${theme}`}>
+<body class={`theme-${themeClass}`} data-theme={themeClass} data-theme-preset={themePreset.preset}>
   <slot />
   
   <!-- Scripts Globales -->
@@ -50,11 +60,7 @@ const { title, theme = 'bourbon', description, locale = 'es', canonical, alterna
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('is-visible');
-            // Opcional: Descomentar si solo quieres que se animen una vez
-            // observer.unobserve(entry.target);
-          } else {
-            // Permite repetir la animación al hacer scroll arriba y abajo
-            entry.target.classList.remove('is-visible');
+            observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
@@ -62,6 +68,37 @@ const { title, theme = 'bourbon', description, locale = 'es', canonical, alterna
       // Los componentes exponen hooks neutrales; esta web decide la animación.
       document.querySelectorAll('[data-awc-reveal], .reveal-up, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
         observer.observe(el);
+      });
+
+      // The shared header closes its menu on click; add the keyboard escape path in the consumer.
+      document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        const openNav = document.querySelector<HTMLElement>('[data-awc-nav][data-open]');
+        if (!openNav) return;
+        openNav.removeAttribute('data-open');
+        const toggle = openNav.closest('[data-awc-header]')?.querySelector<HTMLButtonElement>('[data-awc-menu-toggle]');
+        toggle?.setAttribute('aria-expanded', 'false');
+        toggle?.setAttribute('aria-label', toggle.dataset.awcMenuOpenLabel ?? (locale === 'en' ? 'Open menu' : 'Abrir menú'));
+        toggle?.focus();
+      });
+
+      // Portfolio forms are intentionally previews: they never transmit data.
+      document.addEventListener('submit', (event) => {
+        const form = event.target as HTMLFormElement;
+        if (!form.matches('.awc-contact form, .awc-booking form')) return;
+        event.preventDefault();
+        let feedback = form.querySelector<HTMLElement>('[data-demo-feedback]');
+        if (!feedback) {
+          feedback = document.createElement('p');
+          feedback.dataset.demoFeedback = '';
+          feedback.setAttribute('role', 'status');
+          feedback.style.margin = '0';
+          feedback.style.color = 'var(--primary-accent)';
+          form.append(feedback);
+        }
+        feedback.textContent = locale === 'en'
+          ? 'Demo only — no data was sent.'
+          : 'Solo demo — no se ha enviado ningún dato.';
       });
     });
   </script>

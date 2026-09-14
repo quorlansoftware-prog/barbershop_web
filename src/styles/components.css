@@ -1,5 +1,5 @@
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
 }
 
 .awc-container {
@@ -22,7 +22,7 @@ body {
 .awc-contact h2 {
   margin-bottom: 16px;
   color: var(--text-main);
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-heading, 'DM Sans', sans-serif);
   font-size: 2.5rem;
   letter-spacing: 0.5px;
 }
@@ -112,7 +112,7 @@ body {
   align-items: center;
   gap: 10px;
   color: var(--text-main);
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-heading, 'DM Sans', sans-serif);
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -220,6 +220,7 @@ body {
 .awc-hero__content {
   position: relative;
   z-index: 2;
+  min-width: 0;
   max-width: 1100px;
 }
 
@@ -235,7 +236,7 @@ body {
   max-width: 760px;
   margin: 20px 0;
   color: var(--text-main);
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-heading, 'DM Sans', sans-serif);
   font-size: 3.8rem;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -243,10 +244,12 @@ body {
 }
 
 .awc-hero__description {
+  width: 100%;
   max-width: 650px;
   margin: 0 0 35px;
   color: var(--text-muted);
   font-size: 1.2rem;
+  overflow-wrap: anywhere;
 }
 
 .awc-hero__actions {
@@ -296,7 +299,7 @@ body {
 .awc-service-card h3 {
   min-height: 58px;
   color: var(--text-main);
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-heading, 'DM Sans', sans-serif);
   font-size: 1.25rem;
 }
 
@@ -310,7 +313,7 @@ body {
   display: block;
   margin-bottom: 20px;
   color: var(--primary-accent);
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-heading, 'DM Sans', sans-serif);
   font-size: 1.6rem;
 }
 
@@ -356,7 +359,7 @@ body {
 }
 
 .awc-about__badge strong {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-heading, 'DM Sans', sans-serif);
   font-size: 2rem;
   line-height: 1;
 }
@@ -413,7 +416,7 @@ body {
   padding: 50px 25px 20px;
   color: white;
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-heading, 'DM Sans', sans-serif);
   font-size: 1.1rem;
 }
 
@@ -437,7 +440,7 @@ body {
 
 .awc-testimonial figcaption {
   color: var(--text-main);
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-heading, 'DM Sans', sans-serif);
   font-weight: 700;
 }
 
@@ -457,7 +460,7 @@ body {
 
 .awc-contact__items dt {
   color: var(--text-main);
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-heading, 'DM Sans', sans-serif);
   font-weight: 700;
 }
 
@@ -479,7 +482,7 @@ body {
 .awc-booking h2 {
   margin-bottom: 20px;
   color: var(--text-main);
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-heading, 'DM Sans', sans-serif);
 }
 
 .awc-contact form,
@@ -615,15 +618,15 @@ body {
 
 /* Scroll reveal animations owned by this project. */
 [data-awc-reveal] {
-  opacity: 0;
   transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-[data-awc-reveal="up"] { transform: translateY(40px); }
-[data-awc-reveal="left"] { transform: translateX(-40px); }
-[data-awc-reveal="right"] { transform: translateX(40px); }
-[data-awc-reveal="scale"] { transform: scale(0.95); }
-[data-awc-reveal].is-visible { opacity: 1; transform: none; }
+html.js [data-awc-reveal] { opacity: 0; }
+html.js [data-awc-reveal="up"] { transform: translateY(40px); }
+html.js [data-awc-reveal="left"] { transform: translateX(-40px); }
+html.js [data-awc-reveal="right"] { transform: translateX(40px); }
+html.js [data-awc-reveal="scale"] { transform: scale(0.95); }
+html.js [data-awc-reveal].is-visible { opacity: 1; transform: none; }
 [data-awc-delay="1"] { transition-delay: 100ms; }
 [data-awc-delay="2"] { transition-delay: 200ms; }
 [data-awc-delay="3"] { transition-delay: 300ms; }
@@ -636,7 +639,10 @@ body {
 }
 
 @media (max-width: 768px) {
-  .awc-container { width: 92%; }
+  .awc-container {
+    width: calc(100vw - 40px);
+    max-width: calc(100vw - 40px);
+  }
   .awc-section { padding: 60px 0; }
   .awc-section__header h2,
   .awc-about h2,
@@ -659,12 +665,47 @@ body {
   .awc-header__nav[data-open] { display: flex; }
   .awc-header__toggle { display: block; }
   .awc-header__actions > .awc-button { display: none; }
+  html.no-js .awc-header__inner { flex-wrap: wrap; }
+  html.no-js .awc-header__nav {
+    position: static;
+    display: flex;
+    flex: 1 1 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 18px;
+    padding: 14px 0 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    text-align: center;
+    backdrop-filter: none;
+  }
+  html.no-js .awc-header__toggle { display: none; }
   .awc-hero { padding-top: 130px; }
   .awc-hero { text-align: center; }
+  .awc-hero__content {
+    width: calc(100vw - 64px);
+    max-width: calc(100vw - 64px);
+  }
   .awc-hero__title { margin-inline: auto; font-size: 2.3rem; }
-  .awc-hero__description { margin-inline: auto; }
-  .awc-hero__actions { flex-direction: column; }
-  .awc-hero__actions .awc-button { width: 100%; }
+  .awc-hero__title { max-width: 100%; overflow-wrap: anywhere; }
+  .awc-hero__description { max-width: 100%; margin-inline: auto; word-break: break-word; white-space: normal; }
+  .theme-bourbon .awc-hero__description,
+  .theme-pure .awc-hero__description,
+  .theme-forma .awc-hero__description {
+    max-width: 320px;
+    font-size: .98rem;
+  }
+  .awc-hero__actions {
+    align-items: center;
+    flex-direction: column;
+  }
+  .awc-hero__actions,
+  .awc-hero__actions .awc-button {
+    width: min(100%, 320px);
+    max-width: 100%;
+  }
   .awc-services__grid,
   .awc-testimonials__grid,
   .awc-about__grid,
@@ -678,9 +719,414 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-awc-reveal] {
+  html {
+    scroll-behavior: auto;
+  }
+  [data-awc-reveal],
+  html.js [data-awc-reveal] {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  .awc-booking[open] {
+    animation: none;
+  }
+}
+
+/* Keyboard users keep a clear focus ring across the shared component contract. */
+.awc-button:focus-visible,
+.awc-brand:focus-visible,
+.awc-header__link:focus-visible,
+.awc-header__toggle:focus-visible,
+.awc-language-switcher a:focus-visible,
+.awc-footer a:focus-visible,
+.awc-booking__close:focus-visible,
+.awc-contact input:focus-visible,
+.awc-contact textarea:focus-visible,
+.awc-booking input:focus-visible,
+.awc-booking select:focus-visible {
+  outline: 3px solid var(--primary-accent);
+  outline-offset: 3px;
+}
+
+/* Editorial theme treatments. These overrides keep the awc-* contract local to the portfolio. */
+.theme-bourbon .awc-header__link,
+.theme-bourbon .awc-brand,
+.theme-pure .awc-header__link,
+.theme-pure .awc-brand,
+.theme-forma .awc-header__link,
+.theme-forma .awc-brand {
+  font-family: var(--font-body);
+}
+
+.theme-bourbon .awc-brand,
+.theme-pure .awc-brand,
+.theme-forma .awc-brand {
+  letter-spacing: .16em;
+  font-size: .78rem;
+}
+
+.theme-bourbon .awc-hero {
+  min-height: min(860px, 100vh);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.theme-bourbon .awc-hero__title {
+  max-width: 680px;
+  font-size: clamp(4.8rem, 11vw, 10rem);
+  font-weight: 400;
+  letter-spacing: -.03em;
+  line-height: .82;
+  text-transform: uppercase;
+}
+
+.theme-bourbon .awc-hero__title [data-awc-hero-accent] {
+  color: var(--primary-accent);
+}
+
+.theme-bourbon .awc-hero .awc-eyebrow,
+.theme-forma .awc-hero .awc-eyebrow {
+  width: fit-content;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: .72rem;
+  letter-spacing: .18em;
+}
+
+.theme-bourbon .awc-services,
+.theme-forma .awc-services {
+  background: var(--bg-dark);
+}
+
+.theme-bourbon .awc-section__header,
+.theme-forma .awc-section__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  text-align: left;
+}
+
+.theme-bourbon .awc-section__header h2,
+.theme-forma .awc-section__header h2 {
+  max-width: 620px;
+  margin-bottom: 0;
+  font-size: clamp(2.8rem, 6vw, 5.8rem);
+  font-weight: 400;
+  letter-spacing: -.04em;
+  line-height: .88;
+}
+
+.theme-bourbon .awc-services__grid {
+  display: block;
+  border-top: 1px solid var(--border-color);
+}
+
+.theme-bourbon .awc-service-card {
+  display: grid;
+  grid-template-columns: 70px 1.25fr 1.8fr 100px 130px;
+  gap: 24px;
+  align-items: center;
+  padding: 26px 0;
+  border-width: 0 0 1px;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.theme-bourbon .awc-service-card:hover {
+  transform: none;
+  padding-inline: 18px;
+  background: var(--bg-card);
+}
+
+.theme-bourbon .awc-service-card__icon {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+}
+
+.theme-bourbon .awc-service-card h3,
+.theme-bourbon .awc-service-card p,
+.theme-bourbon .awc-service-card strong {
+  min-height: auto;
+  margin: 0;
+}
+
+.theme-bourbon .awc-service-card h3 {
+  font-size: 1.7rem;
+  font-weight: 400;
+}
+
+.theme-bourbon .awc-service-card p {
+  font-size: .92rem;
+}
+
+.theme-bourbon .awc-service-card strong {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.theme-bourbon .awc-service-card .awc-button {
+  width: auto;
+  padding: 9px 12px;
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.theme-bourbon .awc-about__media img,
+.theme-bourbon .awc-gallery__item,
+.theme-bourbon .awc-contact__form,
+.theme-bourbon .awc-booking__card {
+  border-radius: 0;
+}
+
+.theme-bourbon .awc-gallery__grid {
+  grid-template-columns: 1.25fr .75fr;
+}
+
+.theme-bourbon .awc-gallery__item:nth-child(2) {
+  margin-top: 100px;
+}
+
+.theme-pure .awc-hero {
+  min-height: min(820px, 100vh);
+}
+
+.theme-pure .awc-hero__content {
+  max-width: 1100px;
+}
+
+.theme-pure .awc-hero__title {
+  max-width: 580px;
+  font-size: clamp(4.5rem, 10vw, 9rem);
+  font-weight: 500;
+  letter-spacing: -.06em;
+  line-height: .78;
+}
+
+.theme-pure .awc-hero__title [data-awc-hero-accent] {
+  color: var(--primary-accent);
+  font-style: italic;
+}
+
+.theme-pure .awc-hero__description {
+  max-width: 430px;
+  font-size: 1rem;
+}
+
+.theme-pure .awc-section__header {
+  text-align: left;
+}
+
+.theme-pure .awc-section__header h2,
+.theme-pure .awc-about h2,
+.theme-pure .awc-contact h2 {
+  font-size: clamp(3rem, 7vw, 6.2rem);
+  font-weight: 500;
+  letter-spacing: -.05em;
+  line-height: .85;
+}
+
+.theme-pure .awc-services__grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.theme-pure .awc-service-card {
+  min-height: 310px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 2px;
+  box-shadow: none;
+}
+
+.theme-pure .awc-service-card:hover {
+  transform: translateY(-5px);
+}
+
+.theme-pure .awc-service-card__icon,
+.theme-pure .awc-service-card strong {
+  font-family: var(--font-heading);
+  font-weight: 500;
+}
+
+.theme-pure .awc-service-card__icon {
+  font-size: 1.4rem;
+}
+
+.theme-pure .awc-service-card h3 {
+  min-height: auto;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.theme-pure .awc-service-card p {
+  min-height: auto;
+}
+
+.theme-pure .awc-gallery__item {
+  border-radius: 2px;
+}
+
+.theme-pure .awc-gallery__item:nth-child(2) {
+  min-height: 540px;
+  margin-top: 70px;
+}
+
+.theme-forma .awc-hero {
+  min-height: min(840px, 100vh);
+}
+
+.theme-forma .awc-hero__title {
+  max-width: 650px;
+  font-size: clamp(4.2rem, 10vw, 9rem);
+  font-weight: 600;
+  letter-spacing: -.08em;
+  line-height: .8;
+}
+
+.theme-forma .awc-hero__title [data-awc-hero-accent] {
+  color: var(--primary-accent);
+}
+
+.theme-forma .awc-hero__description {
+  max-width: 460px;
+}
+
+.theme-forma .awc-button--primary {
+  color: #fff;
+  background: var(--primary-accent);
+}
+
+.theme-forma .awc-button--outline:hover {
+  color: var(--text-main);
+  background: #cbf34a;
+  border-color: #cbf34a;
+}
+
+.theme-forma .awc-services__grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.theme-forma .awc-service-card {
+  min-height: 300px;
+  border-radius: 0;
+  border-top: 6px solid var(--primary-accent);
+}
+
+.theme-forma .awc-service-card:nth-child(2) {
+  border-top-color: #cbf34a;
+}
+
+.theme-forma .awc-service-card:nth-child(3) {
+  border-top-color: var(--text-main);
+}
+
+.theme-forma .awc-service-card__icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--text-main);
+  background: #cbf34a;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+}
+
+.theme-forma .awc-service-card h3,
+.theme-forma .awc-service-card strong {
+  font-family: var(--font-heading);
+  letter-spacing: -.03em;
+}
+
+.theme-forma .awc-service-card h3 {
+  min-height: auto;
+  font-size: 2rem;
+}
+
+.theme-forma .awc-gallery__item {
+  border-radius: 0;
+}
+
+.theme-forma .awc-gallery__item:nth-child(2) {
+  margin-top: 90px;
+}
+
+.theme-pure .awc-footer,
+.theme-forma .awc-footer {
+  background: var(--bg-alt);
+}
+
+.theme-bourbon .awc-booking__card,
+.theme-pure .awc-booking__card,
+.theme-forma .awc-booking__card {
+  box-shadow: 0 30px 100px rgba(0, 0, 0, .28);
+}
+
+@media (max-width: 768px) {
+  .theme-bourbon .awc-hero__title,
+  .theme-pure .awc-hero__title,
+  .theme-forma .awc-hero__title {
+    max-width: 100%;
+    font-size: clamp(2.8rem, 10vw, 4.2rem);
+    line-height: .84;
+  }
+
+  .theme-pure .awc-hero__title { font-size: clamp(2.8rem, 11vw, 4.3rem); }
+  .theme-forma .awc-hero__title { font-size: clamp(2.8rem, 10vw, 4.3rem); }
+
+  .theme-bourbon .awc-section__header,
+  .theme-forma .awc-section__header {
+    display: block;
+  }
+
+  .theme-bourbon .awc-section__header h2,
+  .theme-forma .awc-section__header h2 {
+    margin-top: 14px;
+    font-size: clamp(3rem, 14vw, 5rem);
+  }
+
+  .theme-bourbon .awc-service-card {
+    grid-template-columns: 42px 1fr 74px;
+    gap: 12px;
+  }
+
+  .theme-bourbon .awc-service-card p {
+    grid-column: 2 / -1;
+    grid-row: 2;
+  }
+
+  .theme-bourbon .awc-service-card strong {
+    grid-column: 3;
+    grid-row: 1;
+    text-align: right;
+  }
+
+  .theme-bourbon .awc-service-card .awc-button {
+    grid-column: 2 / -1;
+  }
+
+  .theme-pure .awc-services__grid,
+  .theme-forma .awc-services__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .theme-pure .awc-service-card,
+  .theme-forma .awc-service-card {
+    min-height: 230px;
+  }
+
+  .theme-pure .awc-gallery__item:nth-child(2),
+  .theme-forma .awc-gallery__item:nth-child(2),
+  .theme-bourbon .awc-gallery__item:nth-child(2) {
+    margin-top: 0;
   }
 }
