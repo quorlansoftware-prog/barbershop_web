@@ -7,7 +7,7 @@ const names = ['Header', 'Hero', 'Services', 'About', 'Gallery', 'Testimonials',
 
 test('the site consumes the shared package', async () => {
   const pkg = JSON.parse(await readFile(new URL('package.json', root), 'utf8'));
-  assert.match(pkg.dependencies['@quorlansoftware/astro-web-components'], /^file:/);
+  assert.match(pkg.dependencies['@quorlansoftware/astro-web-components'], /^git\+https:\/\/github\.com\/quorlansoftware-prog\/astro-web-components\.git#main$/);
   const page = await readFile(new URL('src/components/BarbershopPage.astro', root), 'utf8');
   for (const name of names) assert.match(page, new RegExp(`astro-web-components/${name}\\.astro`));
 });
