@@ -32,3 +32,13 @@ test('the consumer owns component styling and reveal animations', async () => {
   assert.match(page, /slot="title"/);
   assert.match(page, /fa-scissors/);
 });
+
+test('the consumer styles the booking dialog and active navigation state', async () => {
+  const styles = await readFile(new URL('src/styles/components.css', root), 'utf8');
+  assert.match(styles, /\.awc-header__link\[data-awc-active\]/);
+  assert.doesNotMatch(styles, /\.awc-header__link:first-child/);
+  assert.match(styles, /\.awc-booking\[open\]/);
+  assert.match(styles, /\.awc-booking\s*\{[^}]*margin:\s*auto/s);
+  assert.match(styles, /\.awc-booking__header/);
+  assert.match(styles, /\.awc-booking__fields/);
+});

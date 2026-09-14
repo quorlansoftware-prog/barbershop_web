@@ -131,7 +131,7 @@ body {
 }
 
 .awc-header__link:hover,
-.awc-header__link:first-child {
+.awc-header__link[data-awc-active] {
   color: var(--primary-accent);
 }
 
@@ -516,10 +516,17 @@ body {
 
 .awc-booking {
   width: min(90%, 500px);
+  max-height: calc(100dvh - 32px);
+  margin: auto;
   padding: 0;
   color: var(--text-main);
   border: 0;
   background: transparent;
+}
+
+.awc-booking[open] {
+  display: block;
+  animation: booking-enter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .awc-booking::backdrop {
@@ -529,7 +536,25 @@ body {
 
 .awc-booking__card {
   position: relative;
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
 }
+
+.awc-booking__header {
+  margin-bottom: 25px;
+  padding-right: 34px;
+}
+
+.awc-booking__header h2 { margin-bottom: 5px; }
+.awc-booking__header p { color: var(--text-muted); font-size: 0.9rem; }
+
+.awc-booking__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+}
+
+.awc-booking__field { min-width: 0; }
 
 .awc-booking__close {
   position: absolute;
@@ -541,6 +566,11 @@ body {
   background: transparent;
   font-size: 1.8rem;
   cursor: pointer;
+}
+
+@keyframes booking-enter {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Scroll reveal animations owned by this project. */
@@ -603,6 +633,8 @@ body {
   .awc-gallery__grid { grid-template-columns: 1fr; }
   .awc-gallery__item { min-height: 330px; }
   .awc-contact__form { padding: 25px; }
+  .awc-booking__card { padding: 25px; }
+  .awc-booking__fields { grid-template-columns: 1fr; gap: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
