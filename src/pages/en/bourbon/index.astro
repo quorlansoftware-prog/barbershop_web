@@ -6,6 +6,6 @@ const page = siteConfig.pages.find((item) => item.id === 'bourbon');
 const metadata = { ...page.metadata, ...(page.metadata.translations?.en ?? {}) };
 ---
 
-<Layout title={metadata.title} description={metadata.description} theme="bourbon" locale="en" canonical="/barbershop_web/en/bourbon/" alternates={[{ locale: 'es', href: '/barbershop_web/bourbon/' }, { locale: 'en', href: '/barbershop_web/en/bourbon/' }]}>
+<Layout title={metadata.title} description={metadata.description} theme="bourbon" locale="en" canonical="/portfolio/en/bourbon/" alternates={[{ locale: 'es', href: '/portfolio/bourbon/' }, { locale: 'en', href: '/portfolio/en/bourbon/' }]}>
   <SiteRenderer config={siteConfig} pageId="bourbon" locale="en" />
 </Layout>

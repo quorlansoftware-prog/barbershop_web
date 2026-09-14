@@ -6,6 +6,6 @@ const page = siteConfig.pages.find((item) => item.id === 'minimal');
 const metadata = { ...page.metadata, ...(page.metadata.translations?.en ?? {}) };
 ---
 
-<Layout title={metadata.title} description={metadata.description} theme="minimal" locale="en" canonical="/barbershop_web/en/minimal/" alternates={[{ locale: 'es', href: '/barbershop_web/minimal/' }, { locale: 'en', href: '/barbershop_web/en/minimal/' }]}>
+<Layout title={metadata.title} description={metadata.description} theme="minimal" locale="en" canonical="/portfolio/en/minimal/" alternates={[{ locale: 'es', href: '/portfolio/minimal/' }, { locale: 'en', href: '/portfolio/en/minimal/' }]}>
   <SiteRenderer config={siteConfig} pageId="minimal" locale="en" />
 </Layout>

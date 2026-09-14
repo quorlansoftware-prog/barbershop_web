@@ -35,7 +35,7 @@ function fixFile(filePath) {
 
     if (changed) {
         // Double check for any double slashes just in case, but BASE_URL usually has a trailing slash.
-        // If BASE_URL is "/barbershop_web/" and we do `${BASE_URL}bourbon`, it becomes "/barbershop_web/bourbon". 
+        // If BASE_URL is "/portfolio/" and we do `${BASE_URL}bourbon`, it becomes "/portfolio/bourbon".
         // Wait! import.meta.env.BASE_URL ALWAYS ends in a slash. 
         // So href="/bourbon" -> href={`${import.meta.env.BASE_URL}bourbon`} is perfect! (Removes the leading slash).
         fs.writeFileSync(filePath, content);

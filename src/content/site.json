@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "site": {
-    "name": "Quarlon Software Barbershop",
-    "basePath": "/barbershop_web/",
+    "name": "Quarlon Software Portfolio",
+    "basePath": "/portfolio/",
     "catalog": {
       "title": "Quarlon Software",
       "description": "Catálogo de Plantillas Web Premium para Barberías y Salones.",

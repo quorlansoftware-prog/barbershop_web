@@ -1,4 +1,4 @@
-# BarberShop Web 💈
+# Quarlon Software Portfolio 💈
 
 Sitio web moderno y elegante para la barbería de alta gama **BARBER & CO**, desarrollado para la organización **Quarlon Software**.
 

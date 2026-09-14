@@ -5,6 +5,6 @@ import siteConfig from '../../content/site.json';
 const page = siteConfig.pages.find((item) => item.id === 'neon');
 ---
 
-<Layout title={page.metadata.title} description={page.metadata.description} theme="neon" locale="es" canonical="/barbershop_web/neon/" alternates={[{ locale: 'es', href: '/barbershop_web/neon/' }, { locale: 'en', href: '/barbershop_web/en/neon/' }]}>
+<Layout title={page.metadata.title} description={page.metadata.description} theme="neon" locale="es" canonical="/portfolio/neon/" alternates={[{ locale: 'es', href: '/portfolio/neon/' }, { locale: 'en', href: '/portfolio/en/neon/' }]}>
   <SiteRenderer config={siteConfig} pageId="neon" locale="es" />
 </Layout>

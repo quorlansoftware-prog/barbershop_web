@@ -5,6 +5,6 @@ import siteConfig from '../../content/site.json';
 const page = siteConfig.pages.find((item) => item.id === 'minimal');
 ---
 
-<Layout title={page.metadata.title} description={page.metadata.description} theme="minimal" locale="es" canonical="/barbershop_web/minimal/" alternates={[{ locale: 'es', href: '/barbershop_web/minimal/' }, { locale: 'en', href: '/barbershop_web/en/minimal/' }]}>
+<Layout title={page.metadata.title} description={page.metadata.description} theme="minimal" locale="es" canonical="/portfolio/minimal/" alternates={[{ locale: 'es', href: '/portfolio/minimal/' }, { locale: 'en', href: '/portfolio/en/minimal/' }]}>
   <SiteRenderer config={siteConfig} pageId="minimal" locale="es" />
 </Layout>

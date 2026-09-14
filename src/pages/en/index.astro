@@ -8,9 +8,9 @@ const pageUrl = (pageId) => `${import.meta.env.BASE_URL}${locale}/${siteConfig.p
 ---
 <!doctype html>
 <html lang="en">
-  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width" /><title>{catalog.title}</title><meta name="description" content={catalog.description} /><link rel="canonical" href="/barbershop_web/en/" /></head>
+  <head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width" /><title>{catalog.title}</title><meta name="description" content={catalog.description} /><link rel="canonical" href="/portfolio/en/" /></head>
   <body>
-    <header><h1>{catalog.title}</h1><p>{catalog.description}</p><a href="/barbershop_web/" lang="es">ES</a></header>
+    <header><h1>{catalog.title}</h1><p>{catalog.description}</p><a href="/portfolio/" lang="es">ES</a></header>
     <main>{cards.map((card) => <a href={pageUrl(card.pageId)} class:list={['card', `theme-${card.theme}`]}><img src={`${import.meta.env.BASE_URL}${card.image}`} alt={card.alt} /><span>{card.badge}</span><h2>{card.title}</h2><p>{card.description}</p><strong>{card.button}</strong></a>)}</main>
     <footer>{catalog.watermark}</footer>
   </body>
