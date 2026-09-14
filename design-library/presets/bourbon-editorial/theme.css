@@ -1,0 +1,16 @@
+.theme-bourbon {
+  --font-heading: "Bebas Neue", Impact, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --bg-dark: var(--bourbon-ink);
+  --bg-card: var(--bourbon-panel);
+  --bg-card-hover: #2a241f;
+  --bg-alt: #171411;
+  --primary-accent: var(--bourbon-copper);
+  --primary-accent-hover: #e08c55;
+  --text-main: var(--bourbon-paper);
+  --text-muted: var(--bourbon-muted);
+  --border-color: var(--bourbon-line);
+  --glass-bg: rgba(29, 26, 23, .86);
+  --glass-border: var(--bourbon-line);
+  --shadow-glow: 0 18px 50px rgba(0, 0, 0, .28);
+}

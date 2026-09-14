@@ -79,7 +79,7 @@
 
 html {
   scroll-behavior: smooth;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
   overflow-x: hidden;
 }
 
@@ -91,7 +91,7 @@ body {
 }
 
 h1, h2, h3, h4, .brand-logo {
-  font-family: 'Cinzel', serif;
+  font-family: var(--font-heading, 'DM Sans', sans-serif);
   letter-spacing: 0.5px;
 }
 
@@ -299,6 +299,73 @@ body {
   --awc-accent: var(--primary-accent);
   --awc-border: var(--border-color);
   --awc-radius: var(--radius-md);
+}
+
+/* Portfolio theme tokens: primitive -> semantic -> component. */
+.theme-bourbon {
+  --font-heading: "Bebas Neue", Impact, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --bg-dark: #11100f;
+  --bg-card: #1d1a17;
+  --bg-card-hover: #2a241f;
+  --bg-alt: #171411;
+  --primary-accent: #c87945;
+  --primary-accent-hover: #e08c55;
+  --text-main: #f1eadf;
+  --text-muted: #b7a99b;
+  --border-color: rgba(241, 234, 223, .18);
+  --glass-bg: rgba(29, 26, 23, .86);
+  --glass-border: rgba(241, 234, 223, .16);
+  --shadow-glow: 0 18px 50px rgba(0, 0, 0, .28);
+  --hero-overlay: linear-gradient(90deg, rgba(17,16,15,.98) 0%, rgba(17,16,15,.86) 34%, rgba(17,16,15,.12) 78%), linear-gradient(180deg, rgba(17,16,15,.1), rgba(17,16,15,.72));
+  --nav-bg: rgba(17, 16, 15, .92);
+}
+
+.theme-pure,
+.theme-minimal {
+  --font-heading: "Cormorant Garamond", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --bg-dark: #efe7dc;
+  --bg-card: #fffaf4;
+  --bg-card-hover: #fffdf9;
+  --bg-alt: #e6d9cd;
+  --primary-accent: #51303e;
+  --primary-accent-hover: #c9827b;
+  --text-main: #332b2d;
+  --text-muted: #75686a;
+  --border-color: rgba(81, 48, 62, .16);
+  --glass-bg: rgba(255, 250, 244, .82);
+  --glass-border: rgba(81, 48, 62, .12);
+  --shadow-glow: 0 18px 60px rgba(81, 48, 62, .1);
+  --hero-overlay: linear-gradient(90deg, rgba(239,231,220,.98) 0%, rgba(239,231,220,.88) 40%, rgba(239,231,220,.12) 82%), linear-gradient(180deg, rgba(239,231,220,.1), rgba(239,231,220,.5));
+  --nav-bg: rgba(239, 231, 220, .9);
+}
+
+.theme-forma {
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --bg-dark: #f4f3ee;
+  --bg-card: #fff;
+  --bg-card-hover: #f8faff;
+  --bg-alt: #dfe7ff;
+  --primary-accent: #1e43df;
+  --primary-accent-hover: #1734ad;
+  --text-main: #172033;
+  --text-muted: #5e6678;
+  --border-color: rgba(23, 32, 51, .16);
+  --glass-bg: rgba(244, 243, 238, .86);
+  --glass-border: rgba(23, 32, 51, .12);
+  --shadow-glow: 0 18px 55px rgba(30, 67, 223, .12);
+  --hero-overlay: linear-gradient(90deg, rgba(244,243,238,.98) 0%, rgba(244,243,238,.86) 43%, rgba(244,243,238,.1) 82%), linear-gradient(180deg, rgba(244,243,238,.1), rgba(244,243,238,.65));
+  --nav-bg: rgba(244, 243, 238, .9);
+}
+
+body {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+}
+
+h1, h2, h3, h4, .brand-logo {
+  font-family: var(--font-heading, 'DM Sans', sans-serif);
 }
 
 .awc-header {

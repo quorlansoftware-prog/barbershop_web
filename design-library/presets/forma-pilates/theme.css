@@ -1,0 +1,16 @@
+.theme-forma {
+  --font-heading: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --bg-dark: var(--forma-chalk);
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8faff;
+  --bg-alt: #dfe7ff;
+  --primary-accent: var(--forma-cobalt);
+  --primary-accent-hover: #1734ad;
+  --text-main: var(--forma-ink);
+  --text-muted: var(--forma-muted);
+  --border-color: var(--forma-line);
+  --glass-bg: rgba(244, 243, 238, .86);
+  --glass-border: rgba(23, 32, 51, .12);
+  --shadow-glow: 0 18px 55px rgba(30, 67, 223, .12);
+}

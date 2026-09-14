@@ -1,11 +1,3 @@
 ---
-import Layout from '../../../layouts/Layout.astro';
-import SiteRenderer from '@quorlansoftware/astro-web-components/SiteRenderer.astro';
-import siteConfig from '../../../content/site.json';
-const page = siteConfig.pages.find((item) => item.id === 'neon');
-const metadata = { ...page.metadata, ...(page.metadata.translations?.en ?? {}) };
+return Astro.redirect('/portfolio/en/');
 ---
-
-<Layout title={metadata.title} description={metadata.description} theme="neon" locale="en" canonical="/portfolio/en/neon/" alternates={[{ locale: 'es', href: '/portfolio/neon/' }, { locale: 'en', href: '/portfolio/en/neon/' }]}>
-  <SiteRenderer config={siteConfig} pageId="neon" locale="en" />
-</Layout>

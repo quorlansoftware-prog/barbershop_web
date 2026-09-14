@@ -1,0 +1,16 @@
+.theme-pure {
+  --font-heading: "Cormorant Garamond", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --bg-dark: var(--pure-sand);
+  --bg-card: var(--pure-paper);
+  --bg-card-hover: #fffdf9;
+  --bg-alt: #e6d9cd;
+  --primary-accent: var(--pure-plum);
+  --primary-accent-hover: var(--pure-clay);
+  --text-main: var(--pure-ink);
+  --text-muted: var(--pure-muted);
+  --border-color: var(--pure-line);
+  --glass-bg: rgba(255, 250, 244, .82);
+  --glass-border: rgba(81, 48, 62, .12);
+  --shadow-glow: 0 18px 60px rgba(81, 48, 62, .1);
+}
