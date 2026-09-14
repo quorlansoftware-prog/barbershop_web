@@ -50,6 +50,7 @@ const themePreset = getThemePreset(theme);
   <script>
     // Inicializar Intersection Observer para animaciones tipo GTA 6
     document.addEventListener('DOMContentLoaded', () => {
+      const pageLocale = document.documentElement.lang || 'es';
       const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -78,7 +79,7 @@ const themePreset = getThemePreset(theme);
         openNav.removeAttribute('data-open');
         const toggle = openNav.closest('[data-awc-header]')?.querySelector<HTMLButtonElement>('[data-awc-menu-toggle]');
         toggle?.setAttribute('aria-expanded', 'false');
-        toggle?.setAttribute('aria-label', toggle.dataset.awcMenuOpenLabel ?? (locale === 'en' ? 'Open menu' : 'Abrir menú'));
+        toggle?.setAttribute('aria-label', toggle.dataset.awcMenuOpenLabel ?? (pageLocale === 'en' ? 'Open menu' : 'Abrir menú'));
         toggle?.focus();
       });
 
@@ -96,7 +97,7 @@ const themePreset = getThemePreset(theme);
           feedback.style.color = 'var(--primary-accent)';
           form.append(feedback);
         }
-        feedback.textContent = locale === 'en'
+        feedback.textContent = pageLocale === 'en'
           ? 'Demo only — no data was sent.'
           : 'Solo demo — no se ha enviado ningún dato.';
       });
