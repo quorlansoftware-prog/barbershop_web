@@ -1,0 +1,11 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import SiteRenderer from '@quorlansoftware/astro-web-components/SiteRenderer.astro';
+import siteConfig from '../../../content/site.json';
+const page = siteConfig.pages.find((item) => item.id === 'neon');
+const metadata = { ...page.metadata, ...(page.metadata.translations?.en ?? {}) };
+---
+
+<Layout title={metadata.title} description={metadata.description} theme="neon" locale="en" canonical="/barbershop_web/en/neon/" alternates={[{ locale: 'es', href: '/barbershop_web/neon/' }, { locale: 'en', href: '/barbershop_web/en/neon/' }]}>
+  <SiteRenderer config={siteConfig} pageId="neon" locale="en" />
+</Layout>

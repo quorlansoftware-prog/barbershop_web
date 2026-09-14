@@ -5,17 +5,24 @@ import '../styles/components.css';
 interface Props {
   title: string;
   theme: 'bourbon' | 'neon' | 'minimal';
+  description?: string;
+  locale?: string;
+  canonical?: string;
+  alternates?: { locale: string; href: string }[];
 }
 
-const { title, theme = 'bourbon' } = Astro.props;
+const { title, theme = 'bourbon', description, locale = 'es', canonical, alternates = [] } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang={locale}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
+  {description && <meta name="description" content={description} />}
+  {canonical && <link rel="canonical" href={canonical} />}
+  {alternates.map((alternate) => <link rel="alternate" hreflang={alternate.locale} href={alternate.href} />)}
   
   <!-- Fonts: Cinzel for headings, Plus Jakarta Sans for body -->
   <link rel="preconnect" href="https://fonts.googleapis.com">

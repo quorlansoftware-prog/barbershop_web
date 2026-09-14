@@ -1,4 +1,9 @@
 ---
+import siteConfig from '../content/site.json';
+const locale = 'es';
+const catalog = siteConfig.site.catalog;
+const cards = catalog.cards.map((card) => ({ ...card, ...(card.translations?.[locale] ?? {}) }));
+const pageUrl = (pageId) => `${import.meta.env.BASE_URL}${siteConfig.pages.find((page) => page.id === pageId)?.path ?? ''}`;
 ---
 
 <!DOCTYPE html>
@@ -158,47 +163,24 @@
 <body>
   
   <div class="header">
-    <h1>Quarlon Software</h1>
-    <p>Catálogo de Plantillas Web Premium para Barberías y Salones.</p>
+    <h1>{catalog.title}</h1>
+    <p>{catalog.description}</p>
   </div>
 
   <div class="grid">
-    <!-- BOURBON -->
-    <a href={`${import.meta.env.BASE_URL}bourbon`} class="card theme-bourbon">
-      <img src={`${import.meta.env.BASE_URL}assets/hero.jpg`} alt="Bourbon Theme" class="card-img" />
+    {cards.map((card) => <a href={pageUrl(card.pageId)} class:list={['card', `theme-${card.theme}`]}>
+      <img src={`${import.meta.env.BASE_URL}${card.image}`} alt={card.alt} class="card-img" />
       <div class="card-content">
-        <span class="badge">Classic Premium</span>
-        <h2 class="card-title">Bourbon &amp; Blade</h2>
-        <p class="card-desc">Estética clásica de los años 20. Tonos cálidos, madera, cuero y elegancia atemporal. Ideal para barberías tradicionales de alto standing.</p>
-        <span class="btn-view">Ver Plantilla</span>
+        <span class="badge">{card.badge}</span>
+        <h2 class="card-title">{card.title}</h2>
+        <p class="card-desc">{card.description}</p>
+        <span class="btn-view">{card.button}</span>
       </div>
-    </a>
-
-    <!-- NEON -->
-    <a href={`${import.meta.env.BASE_URL}neon`} class="card theme-neon">
-      <img src={`${import.meta.env.BASE_URL}assets/hero_neon.jpg`} alt="Neon Theme" class="card-img" />
-      <div class="card-content">
-        <span class="badge">Vintage Classic</span>
-        <h2 class="card-title">Vintage Cuts</h2>
-        <p class="card-desc">El auténtico estilo de las barberías de toda la vida. Diseño limpio, colores emblemáticos (rojo, blanco y azul) y la máxima precisión en cada corte a navaja.</p>
-        <span class="btn-view">Ver Plantilla</span>
-      </div>
-    </a>
-
-    <!-- MINIMAL -->
-    <a href={`${import.meta.env.BASE_URL}minimal`} class="card theme-minimal">
-      <img src={`${import.meta.env.BASE_URL}assets/hero_minimal.jpg`} alt="Minimal Theme" class="card-img" />
-      <div class="card-content">
-        <span class="badge">Warm Japandi</span>
-        <h2 class="card-title">Pure Studio</h2>
-        <p class="card-desc">Un oasis de bienestar estilo Japandi. Tonos arena cálidos, maderas naturales y cosmética botánica. Diseñado para transmitir la máxima relajación y lujo silencioso.</p>
-        <span class="btn-view">Ver Plantilla</span>
-      </div>
-    </a>
+    </a>)}
   </div>
 
   <div class="watermark">
-    &copy; 2026 Quarlon Software - Portfolio Showcase
+    {catalog.watermark}
   </div>
 
 </body>
