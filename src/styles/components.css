@@ -1017,7 +1017,9 @@ html.js [data-awc-reveal].is-visible { opacity: 1; transform: none; }
 .theme-miga .awc-service-card__icon { color: var(--miga-tomato); font-family: var(--font-heading); }
 .theme-miga .awc-about { background: var(--miga-tomato); }
 .theme-miga .awc-about h2, .theme-miga .awc-about p, .theme-miga .awc-about li { color: var(--miga-cream); }
-.theme-miga .awc-about__badge { color: var(--miga-ink); background: var(--miga-cream); }
+.theme-miga .awc-about .awc-about__badge { color: var(--miga-ink); background: var(--miga-cream); }
+.theme-miga .awc-about .awc-about__badge strong,
+.theme-miga .awc-about .awc-about__badge span { color: var(--miga-ink); }
 .theme-miga .awc-footer { color: var(--miga-cream); background: var(--miga-ink); }
 .theme-miga .awc-footer a:hover { color: var(--miga-tomato); }
 .theme-miga .awc-gallery--horizontal .awc-gallery__grid { display: flex; gap: clamp(16px, 3vw, 36px); overflow-x: auto; overscroll-behavior-inline: contain; padding-bottom: 12px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
@@ -1040,8 +1042,11 @@ html.js [data-awc-reveal].is-visible { opacity: 1; transform: none; }
 .theme-miga .awc-gallery__dialog-figure [data-awc-lightbox-description] { grid-column: 1 / -1; }
 
 @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] { min-height: calc(100svh + var(--awc-gallery-scroll-range)); }
-  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-container { position: sticky; top: 0; display: flex; min-height: 100svh; flex-direction: column; justify-content: center; }
+  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] { --miga-scroll-stage: clamp(620px, 74svh, 700px); min-height: calc(var(--awc-gallery-scroll-range) + var(--miga-scroll-stage)); }
+  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-container { position: sticky; top: 0; display: flex; min-height: var(--miga-scroll-stage); flex-direction: column; justify-content: center; }
+  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-section__header { margin-bottom: clamp(24px, 3vw, 42px); }
+  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-section__header h2 { font-size: clamp(3.8rem, 7vw, 7rem); }
+  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-gallery__item { flex-basis: clamp(240px, 25vw, 360px); }
   .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-gallery__grid { overflow-x: hidden; scroll-snap-type: none; }
 }
 .theme-miga .awc-gallery__dialog-figure [data-awc-lightbox-price] { grid-column: 2; grid-row: 1; font: 400 1.65rem/1 var(--font-heading); }
