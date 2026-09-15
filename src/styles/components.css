@@ -1024,8 +1024,24 @@ html.js [data-awc-reveal].is-visible { opacity: 1; transform: none; }
 .theme-miga .awc-about .awc-about__badge span { color: var(--miga-ink); }
 .theme-miga .awc-footer { color: var(--miga-cream); background: var(--miga-ink); }
 .theme-miga .awc-footer a:hover { color: var(--miga-tomato); }
-.theme-miga .awc-gallery--horizontal .awc-gallery__grid { display: flex; gap: clamp(16px, 3vw, 36px); overflow-x: auto; overscroll-behavior-inline: contain; padding-bottom: 12px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
-.theme-miga .awc-gallery--horizontal .awc-gallery__item { flex: 0 0 clamp(270px, 35vw, 470px); min-height: 0; border-radius: 0; background: var(--miga-ink); scroll-snap-align: start; }
+.theme-miga .awc-gallery--horizontal .awc-gallery__grid {
+  --miga-carousel-gap: clamp(16px, 3vw, 36px);
+  display: flex;
+  width: calc(100% + (100vw - 100%) / 2);
+  gap: var(--miga-carousel-gap);
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 0 0 12px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+.theme-miga .awc-gallery--horizontal .awc-gallery__item {
+  flex: 0 0 calc((100% - (2 * var(--miga-carousel-gap))) / 3);
+  min-height: 0;
+  border-radius: 0;
+  background: var(--miga-ink);
+  scroll-snap-align: start;
+}
 .theme-miga .awc-gallery--horizontal .awc-gallery__item { display: flex; aspect-ratio: auto !important; flex-direction: column; }
 .theme-miga .awc-gallery--horizontal .awc-gallery__item img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
 .theme-miga .awc-gallery--horizontal .awc-gallery__open { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
@@ -1042,6 +1058,12 @@ html.js [data-awc-reveal].is-visible { opacity: 1; transform: none; }
 .theme-miga .awc-gallery--editorial .awc-gallery__item:nth-child(3n + 2):hover,
 .theme-miga .awc-gallery--editorial .awc-gallery__item:nth-child(3n + 2):focus-within { transform: translateY(calc(8vw - 8px)) rotate(.35deg); }
 .theme-miga .awc-gallery__grid:focus-visible { outline: 3px solid var(--miga-tomato); outline-offset: 8px; }
+
+.theme-miga .awc-gallery--editorial .awc-gallery__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 1.4vw, 20px);
+}
+.theme-miga .awc-gallery--editorial .awc-gallery__item { min-height: clamp(220px, 28vw, 380px); }
 
 .theme-miga .awc-floating-image { position: fixed; z-index: 8; top: clamp(150px, 42vh, 470px); left: -24vw; width: clamp(140px, 14vw, 220px); aspect-ratio: 4 / 5; overflow: hidden; pointer-events: none; clip-path: polygon(5% 8%, 92% 0, 100% 90%, 14% 100%, 0 48%); filter: drop-shadow(0 18px 20px rgba(23, 43, 80, .28)); animation: miga-fly 26s linear infinite; }
 .theme-miga .awc-floating-image img { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -1061,11 +1083,11 @@ html.js [data-awc-reveal].is-visible { opacity: 1; transform: none; }
 .theme-miga .awc-gallery__dialog-figure [data-awc-lightbox-description] { grid-column: 1 / -1; }
 
 @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] { --miga-scroll-stage: 100svh; min-height: 100svh; height: 100svh; padding: 0; display: flex; align-items: center; }
-  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-container { position: sticky; top: 0; display: flex; min-height: 100svh; flex-direction: column; justify-content: center; }
+  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] { --miga-scroll-stage: auto; min-height: 0; height: auto; padding: 96px 0 0; display: flex; align-items: center; }
+  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-container { position: sticky; top: 0; display: flex; min-height: 0; flex-direction: column; justify-content: center; }
   .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-section__header { margin-bottom: clamp(24px, 3vw, 42px); }
   .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-section__header h2 { font-size: clamp(3.8rem, 7vw, 7rem); }
-  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-gallery__item { flex-basis: clamp(240px, 25vw, 360px); }
+  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-gallery__item { flex-basis: calc((100% - (2 * var(--miga-carousel-gap))) / 3); }
   .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-gallery__grid { overflow-x: auto; scroll-snap-type: none; scrollbar-width: none; }
   .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-gallery__grid::-webkit-scrollbar { display: none; }
 }
@@ -1081,7 +1103,7 @@ html.js [data-awc-reveal].is-visible { opacity: 1; transform: none; }
   .theme-miga .awc-gallery--horizontal .awc-section__header { position: relative; max-width: calc(100% + 22px); margin-right: -22px; overflow: clip; }
   .theme-miga .awc-gallery--horizontal .awc-section__header h2 { position: relative; z-index: 1; max-width: 100%; font-size: clamp(3.35rem, 15.8vw, 5.8rem); line-height: .8; }
   .theme-miga .awc-gallery--horizontal .awc-section__header h2::after { position: absolute; z-index: -1; top: .3em; left: .08em; color: transparent; content: attr(data-awc-gallery-title); -webkit-text-stroke: 1px rgba(23, 43, 80, .18); opacity: .45; transform: translate(9%, 16%); white-space: nowrap; pointer-events: none; }
-  .theme-miga .awc-gallery--horizontal .awc-gallery__grid { gap: 12px; margin-right: -22px; padding: 0 24px 14px 10px; scroll-padding-inline: 10px; scrollbar-width: none; }
+  .theme-miga .awc-gallery--horizontal .awc-gallery__grid { --miga-carousel-gap: 12px; width: calc(100% + (100vw - 100%) / 2); gap: var(--miga-carousel-gap); margin-right: 0; padding: 0 0 14px; scroll-padding-inline: 0; scrollbar-width: none; }
   .theme-miga .awc-gallery--horizontal .awc-gallery__grid::-webkit-scrollbar { display: none; }
   .theme-miga .awc-gallery--horizontal .awc-gallery__item { flex-basis: min(78vw, 318px); }
   .theme-miga .awc-gallery--horizontal .awc-gallery__item figcaption { gap: 8px; padding: 18px 16px 20px; }
@@ -1107,7 +1129,10 @@ html.js [data-awc-reveal].is-visible { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .theme-miga .awc-floating-image { animation: none; transform: translateX(-130%); }
-  .theme-miga .awc-gallery--editorial .awc-gallery__item { transition: none; }
+  .theme-miga .awc-gallery--editorial .awc-gallery__item,
+  .theme-miga .awc-gallery--editorial .awc-gallery__item:hover,
+  .theme-miga .awc-gallery--editorial .awc-gallery__item:focus-within { transition: none; transform: none; }
+  .theme-miga .awc-gallery__item:hover img { transform: none; transition: none; }
 }
 
 .theme-forma .awc-hero__title [data-awc-hero-accent] {

@@ -35,8 +35,9 @@ test('the consumer owns component styling and reveal animations', async () => {
   assert.match(styles, /\.theme-miga \.awc-gallery__dialog\[open\]/);
   assert.match(styles, /\.theme-miga \.awc-gallery__dialog-content/);
   assert.match(styles, /\.theme-miga \.awc-gallery--horizontal \.awc-gallery__grid\s*\{[^}]*display:\s*flex/s);
-  assert.match(styles, /\.theme-miga \.awc-gallery--horizontal\[data-awc-gallery-scroll-ready\]\s*\{[^}]*min-height:\s*100svh/s);
+  assert.match(styles, /\.theme-miga \.awc-gallery--horizontal\[data-awc-gallery-scroll-ready\]\s*\{[^}]*min-height:\s*0;[^}]*height:\s*auto/s);
   assert.match(styles, /\.theme-miga \.awc-gallery--horizontal\[data-awc-gallery-scroll-ready\] \.awc-container\s*\{[^}]*position:\s*sticky/s);
+  assert.match(styles, /\.theme-miga \.awc-gallery--horizontal\[data-awc-gallery-scroll-ready\] \.awc-container\s*\{[^}]*min-height:\s*0/s);
   assert.match(styles, /\.theme-miga \.awc-about \.awc-about__badge\s*\{[^}]*color:\s*var\(--miga-ink\)/s);
   assert.match(styles, /--miga-scroll-stage/);
   assert.match(styles, /overflow-x:\s*clip/);
@@ -44,6 +45,9 @@ test('the consumer owns component styling and reveal animations', async () => {
   assert.match(styles, /awc-gallery--horizontal \.awc-gallery__item\s*\{[^}]*flex-basis:\s*min\(78vw/s);
   assert.match(styles, /awc-floating-image/);
   assert.match(styles, /miga-fly/);
+  assert.match(styles, /awc-gallery--horizontal \.awc-gallery__grid\s*\{[^}]*width:\s*calc\(100% \+ \(100vw - 100%\) \/ 2\)/s);
+  assert.match(styles, /awc-gallery--editorial \.awc-gallery__grid\s*\{[^}]*grid-template-columns:\s*repeat\(3/s);
+  assert.doesNotMatch(styles, /awc-gallery--horizontal \.awc-gallery__grid\s*\{[^}]*margin-right:\s*-22px/s);
   assert.match(styles, /\.theme-pure/);
   assert.match(styles, /\.awc-header\[data-awc-scrolled\]/);
   assert.match(styles, /\.awc-hero\s*\{[^}]*text-align:\s*left/s);

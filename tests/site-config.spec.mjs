@@ -38,14 +38,13 @@ test('MIGA keeps its editorial menu, gallery and translations in the shared conf
   assert.equal(miga.dialogs?.length ?? 0, 0);
   const menu = miga.sections.find((block) => block.id === 'menu');
   const gallery = miga.sections.find((block) => block.id === 'universe');
-  const floating = miga.sections.find((block) => block.type === 'FloatingImage');
   assert.equal(menu.props.layout, 'horizontal');
   assert.equal(menu.props.motion, 'scroll');
   assert.equal(menu.props.images.length, 8);
   assert.equal(gallery.props.layout, 'editorial');
   assert.equal(gallery.props.lightbox, true);
   assert.equal(gallery.props.images.length, 14);
-  assert.equal(floating.props.image, 'miga/miga-03.png');
+  assert.equal(miga.sections.some((block) => block.type === 'FloatingImage'), false);
   assert.ok(menu.props.images.every((image) => image.price));
   assert.ok(miga.sections.every((block) => block.translations?.en));
 
