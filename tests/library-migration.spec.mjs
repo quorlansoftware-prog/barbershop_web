@@ -39,6 +39,11 @@ test('the consumer owns component styling and reveal animations', async () => {
   assert.match(styles, /\.theme-miga \.awc-gallery--horizontal\[data-awc-gallery-scroll-ready\] \.awc-container\s*\{[^}]*position:\s*sticky/s);
   assert.match(styles, /\.theme-miga \.awc-about \.awc-about__badge\s*\{[^}]*color:\s*var\(--miga-ink\)/s);
   assert.match(styles, /--miga-scroll-stage/);
+  assert.match(styles, /overflow-x:\s*clip/);
+  assert.match(styles, /awc-gallery--editorial \.awc-gallery__grid\s*\{[^}]*grid-template-columns:\s*repeat\(2/s);
+  assert.match(styles, /awc-gallery--horizontal \.awc-gallery__item\s*\{[^}]*flex-basis:\s*min\(78vw/s);
+  assert.match(styles, /awc-floating-image/);
+  assert.match(styles, /miga-fly/);
   assert.match(styles, /\.theme-pure/);
   assert.match(styles, /\.awc-header\[data-awc-scrolled\]/);
   assert.match(styles, /\.awc-hero\s*\{[^}]*text-align:\s*left/s);

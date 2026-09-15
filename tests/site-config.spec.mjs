@@ -11,7 +11,7 @@ test('the portfolio is composed from one versioned JSON config', () => {
   assert.deepEqual(site.locales.map((locale) => locale.code), ['es', 'en']);
   assert.deepEqual(site.pages.map((page) => page.id), ['bourbon', 'minimal', 'forma', 'miga']);
   assert.equal(site.site.designLibrary, 'design-library/');
-  assert.deepEqual(site.site.catalog.cards.map((card) => card.pageId), ['bourbon', 'minimal', 'forma', 'miga']);
+  assert.deepEqual(site.site.catalog.cards.map((card) => card.pageId), ['miga', 'bourbon', 'minimal', 'forma']);
   assert.equal(site.site.catalog.cards.find((card) => card.pageId === 'miga').featured, true);
   for (const page of site.pages) {
     assert.ok(page.header && page.sections.length && page.footer);
@@ -38,12 +38,14 @@ test('MIGA keeps its editorial menu, gallery and translations in the shared conf
   assert.equal(miga.dialogs?.length ?? 0, 0);
   const menu = miga.sections.find((block) => block.id === 'menu');
   const gallery = miga.sections.find((block) => block.id === 'universe');
+  const floating = miga.sections.find((block) => block.type === 'FloatingImage');
   assert.equal(menu.props.layout, 'horizontal');
   assert.equal(menu.props.motion, 'scroll');
   assert.equal(menu.props.images.length, 8);
   assert.equal(gallery.props.layout, 'editorial');
   assert.equal(gallery.props.lightbox, true);
   assert.equal(gallery.props.images.length, 14);
+  assert.equal(floating.props.image, 'miga/miga-03.png');
   assert.ok(menu.props.images.every((image) => image.price));
   assert.ok(miga.sections.every((block) => block.translations?.en));
 
@@ -65,6 +67,8 @@ test('MIGA keeps its editorial menu, gallery and translations in the shared conf
 
 test('the catalog card content is read from the shared config', async () => {
   const index = await readFile(new URL('src/pages/index.astro', root), 'utf8');
+  const englishIndex = await readFile(new URL('src/pages/en/index.astro', root), 'utf8');
   assert.match(index, /siteConfig\.site\.catalog/);
   assert.doesNotMatch(index, /Bourbon &amp; Blade/);
+  assert.match(englishIndex, /catalog-card--featured/);
 });
