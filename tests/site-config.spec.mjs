@@ -11,8 +11,12 @@ test('the portfolio is composed from one versioned JSON config', () => {
   assert.deepEqual(site.locales.map((locale) => locale.code), ['es', 'en']);
   assert.deepEqual(site.pages.map((page) => page.id), ['bourbon', 'minimal', 'forma', 'miga']);
   assert.equal(site.site.designLibrary, 'design-library/');
-  assert.deepEqual(site.site.catalog.cards.map((card) => card.pageId), ['miga', 'bourbon', 'minimal', 'forma']);
-  assert.equal(site.site.catalog.cards.find((card) => card.pageId === 'miga').featured, true);
+  assert.deepEqual(site.site.catalog.cards.map((card) => card.pageId), ['miga', 'pr-reformas', 'bourbon', 'minimal', 'forma']);
+  assert.equal(site.site.catalog.cards.find((card) => card.pageId === 'miga').featured, false);
+  const reformas = site.site.catalog.cards.find((card) => card.pageId === 'pr-reformas');
+  assert.equal(reformas.externalHref, 'https://prreformas.es/');
+  assert.equal(reformas.image, 'assets/catalog_pr_reformas.avif');
+  assert.ok(reformas.translations.en.description);
   for (const page of site.pages) {
     assert.ok(page.header && page.sections.length && page.footer);
     assert.ok(page.metadata.translations.en.title);
@@ -68,6 +72,8 @@ test('the catalog card content is read from the shared config', async () => {
   const index = await readFile(new URL('src/pages/index.astro', root), 'utf8');
   const englishIndex = await readFile(new URL('src/pages/en/index.astro', root), 'utf8');
   assert.match(index, /siteConfig\.site\.catalog/);
+  assert.match(index, /card\.externalHref/);
   assert.doesNotMatch(index, /Bourbon &amp; Blade/);
   assert.match(englishIndex, /catalog-card--featured/);
+  assert.match(englishIndex, /card\.externalHref/);
 });
