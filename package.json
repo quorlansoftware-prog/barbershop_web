@@ -13,7 +13,7 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@quorlansoftware/astro-web-components": "github:quorlansoftware-prog/astro-web-components#cdb85baa0044c34f5769e6af6f45354eac7b029a",
+    "@quorlansoftware/astro-web-components": "github:quorlansoftware-prog/astro-web-components#eebc2eeeb5f0507be48e3df9e2fd9a5932c4bde1",
     "astro": "^7.3.2"
   },
   "allowScripts": {
