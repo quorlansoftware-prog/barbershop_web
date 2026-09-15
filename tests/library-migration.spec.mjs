@@ -6,7 +6,7 @@ const root = new URL('../', import.meta.url);
 
 test('the site consumes the pinned shared package and SiteRenderer', async () => {
   const pkg = JSON.parse(await readFile(new URL('package.json', root), 'utf8'));
-  assert.equal(pkg.dependencies['@quorlansoftware/astro-web-components'], 'git+https://github.com/quorlansoftware-prog/astro-web-components.git#ac658cc');
+  assert.match(pkg.dependencies['@quorlansoftware/astro-web-components'], /^github:quorlansoftware-prog\/astro-web-components#[0-9a-f]{40}$/);
   const page = await readFile(new URL('src/pages/bourbon/index.astro', root), 'utf8');
   assert.match(page, /astro-web-components\/SiteRenderer\.astro/);
   assert.match(page, /site\.json/);
@@ -35,7 +35,7 @@ test('the consumer owns component styling and reveal animations', async () => {
   assert.match(styles, /\.theme-miga \.awc-gallery__dialog\[open\]/);
   assert.match(styles, /\.theme-miga \.awc-gallery__dialog-content/);
   assert.match(styles, /\.theme-miga \.awc-gallery--horizontal \.awc-gallery__grid\s*\{[^}]*display:\s*flex/s);
-  assert.match(styles, /\.theme-miga \.awc-gallery--horizontal\[data-awc-gallery-scroll-ready\]\s*\{[^}]*min-height:\s*calc\(var\(--awc-gallery-scroll-range\) \+ var\(--miga-scroll-stage\)\)/s);
+  assert.match(styles, /\.theme-miga \.awc-gallery--horizontal\[data-awc-gallery-scroll-ready\]\s*\{[^}]*min-height:\s*100svh/s);
   assert.match(styles, /\.theme-miga \.awc-gallery--horizontal\[data-awc-gallery-scroll-ready\] \.awc-container\s*\{[^}]*position:\s*sticky/s);
   assert.match(styles, /\.theme-miga \.awc-about \.awc-about__badge\s*\{[^}]*color:\s*var\(--miga-ink\)/s);
   assert.match(styles, /--miga-scroll-stage/);

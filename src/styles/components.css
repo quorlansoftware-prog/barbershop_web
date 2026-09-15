@@ -1042,12 +1042,13 @@ html.js [data-awc-reveal].is-visible { opacity: 1; transform: none; }
 .theme-miga .awc-gallery__dialog-figure [data-awc-lightbox-description] { grid-column: 1 / -1; }
 
 @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] { --miga-scroll-stage: clamp(620px, 74svh, 700px); min-height: calc(var(--awc-gallery-scroll-range) + var(--miga-scroll-stage)); }
-  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-container { position: sticky; top: 0; display: flex; min-height: var(--miga-scroll-stage); flex-direction: column; justify-content: center; }
+  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] { --miga-scroll-stage: 100svh; min-height: 100svh; height: 100svh; padding: 0; display: flex; align-items: center; }
+  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-container { position: sticky; top: 0; display: flex; min-height: 100svh; flex-direction: column; justify-content: center; }
   .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-section__header { margin-bottom: clamp(24px, 3vw, 42px); }
   .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-section__header h2 { font-size: clamp(3.8rem, 7vw, 7rem); }
   .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-gallery__item { flex-basis: clamp(240px, 25vw, 360px); }
-  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-gallery__grid { overflow-x: hidden; scroll-snap-type: none; }
+  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-gallery__grid { overflow-x: auto; scroll-snap-type: none; scrollbar-width: none; }
+  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-gallery__grid::-webkit-scrollbar { display: none; }
 }
 .theme-miga .awc-gallery__dialog-figure [data-awc-lightbox-price] { grid-column: 2; grid-row: 1; font: 400 1.65rem/1 var(--font-heading); }
 .theme-miga .awc-gallery__dialog button { width: 46px; height: 46px; border: 1px solid var(--miga-cream); color: var(--miga-cream); background: transparent; font-size: 2rem; cursor: pointer; }
