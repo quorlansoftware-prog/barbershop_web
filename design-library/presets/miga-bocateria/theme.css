@@ -1,0 +1,17 @@
+.theme-miga {
+  --font-heading: "Bebas Neue", Impact, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --bg-dark: var(--miga-cream);
+  --bg-card: #fffaf0;
+  --bg-card-hover: #fff;
+  --bg-alt: var(--miga-ink);
+  --primary-accent: var(--miga-tomato);
+  --primary-accent-hover: #b92018;
+  --text-main: var(--miga-ink);
+  --text-muted: #52617c;
+  --border-color: rgba(23, 43, 80, .2);
+  --glass-bg: rgba(255, 243, 219, .92);
+  --glass-border: rgba(23, 43, 80, .14);
+  --shadow-glow: 0 18px 42px rgba(23, 43, 80, .12);
+  --hero-overlay: linear-gradient(90deg, rgba(255, 243, 219, .98) 0%, rgba(255, 243, 219, .85) 43%, rgba(255, 243, 219, .08) 70%);
+}

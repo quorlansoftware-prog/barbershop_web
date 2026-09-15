@@ -23,6 +23,14 @@ const themes = {
     fonts: ['Space Grotesk', 'DM Sans'],
     assets: ['assets/hero_forma.jpg', 'assets/experience_forma.jpg', 'assets/detail_forma.jpg'],
   },
+  miga: {
+    id: 'miga',
+    preset: 'miga-bocateria',
+    sector: 'bocateria',
+    stylesheet: 'design-library/presets/miga-bocateria/theme.css',
+    fonts: ['Bebas Neue', 'DM Sans'],
+    assets: ['assets/miga-placeholder.svg'],
+  },
 };
 
 export const themeRegistry = Object.freeze(themes);

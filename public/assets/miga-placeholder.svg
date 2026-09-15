@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Marcador de fotografía MIGA</title><desc id="desc">Fondo crema, pan rojo y un bocata ilustrado como marcador temporal.</desc>
+  <rect width="1200" height="900" fill="#fff3db"/><path d="M0 708h1200v192H0z" fill="#172b50"/>
+  <g transform="translate(160 210) rotate(-6 440 240)"><path d="M94 258c60-190 650-220 790-4l-38 111H132z" fill="#e63324"/><path d="M120 378h704l-50 112H164z" fill="#e63324"/><path d="M132 340h678l-26 58H158z" fill="#ffe275"/><path d="M164 330c72-62 514-70 614 0l-28 18H193z" fill="#6f9c48"/><circle cx="330" cy="248" r="14" fill="#fff3db"/><circle cx="565" cy="220" r="14" fill="#fff3db"/><circle cx="698" cy="261" r="14" fill="#fff3db"/></g>
+  <text x="60" y="96" fill="#172b50" font-family="Arial, sans-serif" font-size="30" font-weight="700" letter-spacing="8">MIGA / FOTO PENDIENTE</text>
+</svg>

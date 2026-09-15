@@ -1,0 +1,12 @@
+{
+  "id": "miga-bocateria",
+  "version": "1.0.0",
+  "sector": "bocateria",
+  "displayName": "MIGA",
+  "theme": "miga",
+  "fonts": ["Bebas Neue", "DM Sans"],
+  "license": "Replace public placeholder imagery with the approved Gemini originals before publication.",
+  "imageWorkflow": {"originals": ["originals/miga-01.png", "originals/miga-24.png"], "optimized": ["public/assets/miga-01.jpg", "public/assets/miga-24.jpg"], "screenshots": ["screenshots/desktop.png", "screenshots/mobile.png"]},
+  "assets": {"placeholder": "assets/miga-placeholder.svg"},
+  "source": "The complete Gemini brief lives in prompts.md; image filenames are miga-01 through miga-24."
+}

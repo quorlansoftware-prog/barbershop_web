@@ -991,6 +991,76 @@ html.js [data-awc-reveal].is-visible { opacity: 1; transform: none; }
   line-height: .8;
 }
 
+/* MIGA keeps the structural awc components and supplies its own food-forward identity. */
+.theme-miga .awc-header { border-bottom: 1px solid rgba(23, 43, 80, .16); }
+.theme-miga .awc-brand { font-family: var(--font-heading); font-size: 2.25rem; letter-spacing: .035em; }
+.theme-miga .awc-header__link { color: var(--text-main); font-size: .72rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.theme-miga .awc-header__link::after { width: 100%; height: 3px; bottom: -8px; background: var(--primary-accent); }
+.theme-miga .awc-hero { min-height: min(860px, 100vh); }
+.theme-miga .awc-hero__title { max-width: 720px; font-size: clamp(5rem, 15vw, 13rem); font-weight: 400; letter-spacing: -.025em; line-height: .72; text-transform: uppercase; }
+.theme-miga .awc-hero__description { max-width: 370px; color: var(--text-main); font-size: 1.08rem; font-weight: 600; }
+.theme-miga .awc-hero .awc-eyebrow { color: var(--miga-ink); border-color: var(--miga-ink); border-radius: 0; background: var(--miga-cream); }
+.theme-miga .awc-button { border-radius: 0; font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.theme-miga .awc-button--primary { color: var(--miga-cream); background: var(--miga-tomato); box-shadow: none; }
+.theme-miga .awc-button--outline { border-color: var(--miga-ink); }
+.theme-miga .awc-section { padding: clamp(74px, 12vw, 160px) 0; }
+.theme-miga .awc-section__header { max-width: 1000px; margin-bottom: clamp(32px, 6vw, 72px); text-align: left; }
+.theme-miga .awc-section__header h2, .theme-miga .awc-about h2 { font-family: var(--font-heading); font-size: clamp(4rem, 10vw, 9rem); font-weight: 400; letter-spacing: -.02em; line-height: .76; text-transform: uppercase; }
+.theme-miga .awc-eyebrow { color: var(--miga-tomato); font-size: .72rem; letter-spacing: .15em; }
+.theme-miga .awc-services { color: var(--miga-cream); background: var(--miga-ink); }
+.theme-miga .awc-services .awc-section__header h2 { color: var(--miga-cream); }
+.theme-miga .awc-services__grid { grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255, 243, 219, .38); }
+.theme-miga .awc-service-card { min-height: 330px; border: 0; border-radius: 0; background: var(--miga-ink); box-shadow: none; }
+.theme-miga .awc-service-card:hover { transform: none; background: #233b67; }
+.theme-miga .awc-service-card h3, .theme-miga .awc-service-card strong { color: var(--miga-cream); font-family: var(--font-heading); font-size: 2.25rem; font-weight: 400; letter-spacing: .01em; }
+.theme-miga .awc-service-card p { color: #d6dcee; min-height: auto; }
+.theme-miga .awc-service-card__icon { color: var(--miga-tomato); font-family: var(--font-heading); }
+.theme-miga .awc-about { background: var(--miga-tomato); }
+.theme-miga .awc-about h2, .theme-miga .awc-about p, .theme-miga .awc-about li { color: var(--miga-cream); }
+.theme-miga .awc-about__badge { color: var(--miga-ink); background: var(--miga-cream); }
+.theme-miga .awc-footer { color: var(--miga-cream); background: var(--miga-ink); }
+.theme-miga .awc-footer a:hover { color: var(--miga-tomato); }
+.theme-miga .awc-gallery--horizontal .awc-gallery__grid { display: flex; gap: clamp(16px, 3vw, 36px); overflow-x: auto; overscroll-behavior-inline: contain; padding-bottom: 12px; scroll-snap-type: x mandatory; scrollbar-width: thin; }
+.theme-miga .awc-gallery--horizontal .awc-gallery__item { flex: 0 0 clamp(270px, 35vw, 470px); min-height: 0; border-radius: 0; background: var(--miga-ink); scroll-snap-align: start; }
+.theme-miga .awc-gallery--horizontal .awc-gallery__item img { aspect-ratio: 4 / 5; }
+.theme-miga .awc-gallery__item { border-radius: 0; border: 1px solid rgba(23, 43, 80, .16); }
+.theme-miga .awc-gallery__item figcaption { color: var(--miga-cream); background: var(--miga-ink); font-weight: 700; letter-spacing: .04em; }
+.theme-miga .awc-gallery__meta { color: var(--miga-cream); background: var(--miga-ink); }
+.theme-miga .awc-gallery__title { font-family: var(--font-heading); font-size: 2.15rem; font-weight: 400; letter-spacing: .02em; }
+.theme-miga .awc-gallery__price { color: var(--miga-cream); font: 400 1.7rem var(--font-heading); }
+.theme-miga .awc-gallery--editorial .awc-gallery__item:nth-child(3n + 2) { transform: translateY(8vw); }
+.theme-miga .awc-gallery__dialog { width: 100vw; max-width: none; height: 100vh; max-height: none; margin: 0; padding: clamp(22px, 4vw, 64px); border: 0; background: rgba(23, 43, 80, .9); }
+.theme-miga .awc-gallery__dialog[open] { display: grid; place-items: center; }
+.theme-miga .awc-gallery__dialog::backdrop { background: rgba(23, 43, 80, .76); backdrop-filter: blur(7px); }
+.theme-miga .awc-gallery__dialog-content { position: relative; display: grid; width: min(100%, 1100px); max-height: 100%; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(12px, 3vw, 34px); }
+.theme-miga .awc-gallery__dialog-figure { min-width: 0; max-height: calc(100vh - 128px); margin: 0; overflow: auto; background: var(--miga-cream); }
+.theme-miga .awc-gallery__dialog-figure img { width: 100%; max-height: calc(100vh - 220px); object-fit: contain; background: var(--miga-cream); }
+.theme-miga .awc-gallery__dialog-figure figcaption { display: grid; grid-template-columns: 1fr auto; gap: 8px 18px; padding: 16px 18px; color: var(--miga-cream); background: var(--miga-ink); }
+.theme-miga .awc-gallery__dialog-figure [data-awc-lightbox-title] { font: 400 2.1rem/1 var(--font-heading); letter-spacing: .02em; }
+.theme-miga .awc-gallery__dialog-figure [data-awc-lightbox-description] { grid-column: 1 / -1; }
+
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] { min-height: calc(100svh + var(--awc-gallery-scroll-range)); }
+  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-container { position: sticky; top: 0; display: flex; min-height: 100svh; flex-direction: column; justify-content: center; }
+  .theme-miga .awc-gallery--horizontal[data-awc-gallery-scroll-ready] .awc-gallery__grid { overflow-x: hidden; scroll-snap-type: none; }
+}
+.theme-miga .awc-gallery__dialog-figure [data-awc-lightbox-price] { grid-column: 2; grid-row: 1; font: 400 1.65rem/1 var(--font-heading); }
+.theme-miga .awc-gallery__dialog button { width: 46px; height: 46px; border: 1px solid var(--miga-cream); color: var(--miga-cream); background: transparent; font-size: 2rem; cursor: pointer; }
+.theme-miga .awc-gallery__dialog button:hover, .theme-miga .awc-gallery__dialog button:focus-visible { color: var(--miga-ink); background: var(--miga-cream); outline: 3px solid var(--miga-tomato); outline-offset: 3px; }
+.theme-miga .awc-gallery__dialog-close { position: fixed; top: clamp(18px, 3vw, 38px); right: clamp(18px, 3vw, 38px); z-index: 1; }
+
+@media (max-width: 768px) {
+  .theme-miga .awc-hero__title { font-size: clamp(4.7rem, 23vw, 7.8rem); }
+  .theme-miga .awc-header__nav { background: var(--miga-cream); }
+  .theme-miga .awc-services__grid { grid-template-columns: 1fr; }
+  .theme-miga .awc-gallery--editorial .awc-gallery__item:nth-child(3n + 2) { transform: none; }
+  .theme-miga .awc-gallery__dialog { padding: 76px 16px 18px; }
+  .theme-miga .awc-gallery__dialog-content { grid-template-columns: 1fr; gap: 12px; }
+  .theme-miga .awc-gallery__dialog-previous, .theme-miga .awc-gallery__dialog-next { position: absolute; z-index: 1; top: 45%; }
+  .theme-miga .awc-gallery__dialog-previous { left: 8px; }
+  .theme-miga .awc-gallery__dialog-next { right: 8px; }
+}
+
 .theme-forma .awc-hero__title [data-awc-hero-accent] {
   color: var(--primary-accent);
 }

@@ -1,0 +1,10 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SiteRenderer from '@quorlansoftware/astro-web-components/SiteRenderer.astro';
+import siteConfig from '../../content/site.json';
+const page = siteConfig.pages.find((item) => item.id === 'miga');
+---
+
+<Layout title={page.metadata.title} description={page.metadata.description} theme="miga" locale="es" canonical="/portfolio/miga/" alternates={[{ locale: 'es', href: '/portfolio/miga/' }, { locale: 'en', href: '/portfolio/en/miga/' }]}>
+  <SiteRenderer config={siteConfig} pageId="miga" locale="es" />
+</Layout>

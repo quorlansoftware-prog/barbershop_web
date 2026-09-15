@@ -4,9 +4,9 @@ import { test } from 'node:test';
 
 const root = new URL('../', import.meta.url);
 
-test('the site consumes the published shared package and SiteRenderer', async () => {
+test('the site consumes the pinned shared package and SiteRenderer', async () => {
   const pkg = JSON.parse(await readFile(new URL('package.json', root), 'utf8'));
-  assert.match(pkg.dependencies['@quorlansoftware/astro-web-components'], /^git\+https:\/\/github\.com\/quorlansoftware-prog\/astro-web-components\.git#main$/);
+  assert.equal(pkg.dependencies['@quorlansoftware/astro-web-components'], 'git+https://github.com/quorlansoftware-prog/astro-web-components.git#ac658cc');
   const page = await readFile(new URL('src/pages/bourbon/index.astro', root), 'utf8');
   assert.match(page, /astro-web-components\/SiteRenderer\.astro/);
   assert.match(page, /site\.json/);
@@ -31,6 +31,12 @@ test('the consumer owns component styling and reveal animations', async () => {
   assert.match(styles, /html\.js \[data-awc-reveal\]/);
   assert.match(styles, /prefers-reduced-motion/);
   assert.match(styles, /\.theme-forma/);
+  assert.match(styles, /\.theme-miga/);
+  assert.match(styles, /\.theme-miga \.awc-gallery__dialog\[open\]/);
+  assert.match(styles, /\.theme-miga \.awc-gallery__dialog-content/);
+  assert.match(styles, /\.theme-miga \.awc-gallery--horizontal \.awc-gallery__grid\s*\{[^}]*display:\s*flex/s);
+  assert.match(styles, /\.theme-miga \.awc-gallery--horizontal\[data-awc-gallery-scroll-ready\]\s*\{[^}]*min-height:\s*calc\(100svh \+ var\(--awc-gallery-scroll-range\)\)/s);
+  assert.match(styles, /\.theme-miga \.awc-gallery--horizontal\[data-awc-gallery-scroll-ready\] \.awc-container\s*\{[^}]*position:\s*sticky/s);
   assert.match(styles, /\.theme-pure/);
   assert.match(styles, /\.awc-header\[data-awc-scrolled\]/);
   assert.match(styles, /\.awc-hero\s*\{[^}]*text-align:\s*left/s);
@@ -45,6 +51,8 @@ test('the design library stores portable presets and Nano Banana prompts', async
     'design-library/presets/pure-beauty/manifest.json',
     'design-library/presets/forma-pilates/manifest.json',
     'design-library/presets/forma-pilates/prompts.md',
+    'design-library/presets/miga-bocateria/manifest.json',
+    'design-library/presets/miga-bocateria/prompts.md',
   ].map((path) => readFile(new URL(path, root), 'utf8')));
   assert.ok(files[0].includes('Fuente de verdad'));
   assert.ok(files[1].includes('YOYOYO'));
@@ -52,6 +60,8 @@ test('the design library stores portable presets and Nano Banana prompts', async
   assert.ok(files[3].includes('pure-beauty'));
   assert.ok(files[4].includes('forma-pilates'));
   assert.ok(files[5].includes('Genera primero'));
+  assert.ok(files[6].includes('miga-bocateria'));
+  assert.ok(files[7].includes('miga-01'));
 });
 
 test('the consumer styles the booking dialog and active navigation state', async () => {
@@ -67,7 +77,9 @@ test('the consumer styles the booking dialog and active navigation state', async
 test('demo forms have an inert action and never point to a network endpoint', async () => {
   const config = JSON.parse(await readFile(new URL('src/content/site.json', root), 'utf8'));
   for (const page of config.pages) {
-    assert.equal(page.sections.find((block) => block.type === 'Contact').props.action, 'javascript:void(0)');
-    assert.equal(page.dialogs.find((block) => block.type === 'BookingModal').props.action, 'javascript:void(0)');
+    const contact = page.sections.find((block) => block.type === 'Contact');
+    const booking = page.dialogs?.find((block) => block.type === 'BookingModal');
+    if (contact) assert.equal(contact.props.action, 'javascript:void(0)');
+    if (booking) assert.equal(booking.props.action, 'javascript:void(0)');
   }
 });
