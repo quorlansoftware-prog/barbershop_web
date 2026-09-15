@@ -4,7 +4,7 @@ const locale = 'en';
 const source = siteConfig.site.catalog;
 const catalog = { ...source, ...(source.translations?.[locale] ?? {}) };
 const cards = source.cards.map((card) => ({ ...card, ...(card.translations?.[locale] ?? {}) }));
-const pageUrl = (pageId) => `${import.meta.env.BASE_URL}${locale}/${siteConfig.pages.find((page) => page.id === pageId)?.path ?? ''}`;
+const pageUrl = (card) => card.externalHref ?? `${import.meta.env.BASE_URL}${locale}/${siteConfig.pages.find((page) => page.id === card.pageId)?.path ?? ''}`;
 ---
 <!doctype html>
 <html lang="en">
@@ -22,7 +22,7 @@ const pageUrl = (pageId) => `${import.meta.env.BASE_URL}${locale}/${siteConfig.p
       <div class="masthead"><p class="eyebrow">Templates that sell services</p><h1>{catalog.title}<span>®</span></h1><p class="intro">{catalog.description}</p></div>
     </header>
     <main class="catalog-grid" aria-label="Portfolio demos">
-      {cards.map((card, index) => <a href={pageUrl(card.pageId)} class:list={['catalog-card', `card-${card.theme}`]}>
+      {cards.map((card, index) => <a href={pageUrl(card)} target={card.externalHref ? '_blank' : undefined} rel={card.externalHref ? 'noreferrer' : undefined} class:list={['catalog-card', `card-${card.theme}`, { 'catalog-card--featured': card.featured }]}>
         <div class="card-media"><img src={`${import.meta.env.BASE_URL}${card.image}`} alt={card.alt} loading={index ? 'lazy' : 'eager'} /><span class="card-index">0{index + 1}</span></div>
         <div class="card-body"><p class="card-sector">{card.sector}</p><div class="card-title-row"><h2>{card.title}</h2><span aria-hidden="true">↗</span></div><p class="card-description">{card.description}</p><span class="card-cta">{card.button}</span></div>
       </a>)}
@@ -44,7 +44,7 @@ const pageUrl = (pageId) => `${import.meta.env.BASE_URL}${locale}/${siteConfig.p
   .intro { max-width: 300px; margin: 0 0 5px; color: #a9abad; font-size: 1.05rem; line-height: 1.4; }
   .catalog-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; padding-bottom: 110px; }
   .catalog-card { display: flex; grid-column: span 6; flex-direction: column; min-height: 560px; overflow: hidden; color: inherit; text-decoration: none; background: #191b1d; border: 1px solid #2a2d30; transition: transform .5s cubic-bezier(.16,1,.3,1), border-color .3s; }
-  .catalog-card:nth-child(3) { grid-column: 3 / span 8; }
+  .catalog-card--featured { grid-column: 3 / span 8; }
   .catalog-card:hover { transform: translateY(-8px); border-color: #73777b; }
   .card-media { position: relative; height: 320px; overflow: hidden; background: #272a2c; }
   .card-media::after { position: absolute; inset: 0; content: ""; background: linear-gradient(180deg, transparent 55%, rgba(16,17,18,.6)); }
@@ -61,7 +61,10 @@ const pageUrl = (pageId) => `${import.meta.env.BASE_URL}${locale}/${siteConfig.p
   .card-cta { margin-top: auto; padding-top: 20px; border-top: 1px solid #303337; color: #f7f4ef; font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
   .card-pure .card-sector, .card-pure .card-title-row span { color: #c9827b; }
   .card-forma .card-sector, .card-forma .card-title-row span { color: #cbf34a; }
+  .card-miga .card-sector, .card-miga .card-title-row span { color: #e63324; }
+  .card-reformas .card-sector, .card-reformas .card-title-row span { color: #54b8a9; }
+  .card-reformas .card-media img { object-position: center 58%; }
   footer { display: flex; justify-content: space-between; gap: 20px; padding: 22px 0 30px; color: #858a8d; border-top: 1px solid #2a2d30; font-size: .75rem; }
-  @media (max-width: 720px) { .catalog-header, .catalog-grid, footer { width: min(100% - 32px, 560px); } .catalog-header { padding-bottom: 70px; } .topline span:nth-child(2) { display: none; } .masthead { display: block; margin-top: 110px; } h1 { font-size: clamp(4.2rem, 21vw, 7rem); } .intro { margin-top: 30px; } .catalog-grid { display: block; } .catalog-card, .catalog-card:nth-child(3) { min-height: 0; margin-bottom: 16px; } .card-media { height: 260px; } footer { display: block; } footer span { display: block; margin-top: 8px; } }
+  @media (max-width: 720px) { .catalog-header, .catalog-grid, footer { width: min(100% - 32px, 560px); } .catalog-header { padding-bottom: 70px; } .topline span:nth-child(2) { display: none; } .masthead { display: block; margin-top: 110px; } h1 { font-size: clamp(4.2rem, 21vw, 7rem); } .intro { margin-top: 30px; } .catalog-grid { display: block; } .catalog-card, .catalog-card--featured { min-height: 0; margin-bottom: 16px; } .card-media { height: 260px; } footer { display: block; } footer span { display: block; margin-top: 8px; } }
   @media (prefers-reduced-motion: reduce) { .catalog-card, .card-media img, .card-title-row span { transition: none; } }
 </style>
