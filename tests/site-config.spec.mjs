@@ -46,6 +46,21 @@ test('MIGA keeps its editorial menu, gallery and translations in the shared conf
   assert.equal(gallery.props.images.length, 14);
   assert.ok(menu.props.images.every((image) => image.price));
   assert.ok(miga.sections.every((block) => block.translations?.en));
+
+  const catalogCard = site.site.catalog.cards.find((card) => card.pageId === 'miga');
+  const about = miga.sections.find((block) => block.id === 'about');
+  const sources = [
+    catalogCard.image,
+    miga.header.props.logoIcon,
+    miga.sections.find((block) => block.id === 'hero').props.image,
+    about.props.image,
+    ...menu.props.images.map((image) => image.src),
+    ...menu.translations.en.images.map((image) => image.src),
+    ...gallery.props.images.map((image) => image.src),
+    ...gallery.translations.en.images.map((image) => image.src),
+  ].filter(Boolean);
+  const expected = Array.from({ length: 24 }, (_, index) => `miga/miga-${String(index + 1).padStart(2, '0')}.png`);
+  assert.deepEqual([...new Set(sources)].sort(), expected.sort());
 });
 
 test('the catalog card content is read from the shared config', async () => {

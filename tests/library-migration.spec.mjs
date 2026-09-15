@@ -35,8 +35,10 @@ test('the consumer owns component styling and reveal animations', async () => {
   assert.match(styles, /\.theme-miga \.awc-gallery__dialog\[open\]/);
   assert.match(styles, /\.theme-miga \.awc-gallery__dialog-content/);
   assert.match(styles, /\.theme-miga \.awc-gallery--horizontal \.awc-gallery__grid\s*\{[^}]*display:\s*flex/s);
-  assert.match(styles, /\.theme-miga \.awc-gallery--horizontal\[data-awc-gallery-scroll-ready\]\s*\{[^}]*min-height:\s*calc\(100svh \+ var\(--awc-gallery-scroll-range\)\)/s);
+  assert.match(styles, /\.theme-miga \.awc-gallery--horizontal\[data-awc-gallery-scroll-ready\]\s*\{[^}]*min-height:\s*calc\(var\(--awc-gallery-scroll-range\) \+ var\(--miga-scroll-stage\)\)/s);
   assert.match(styles, /\.theme-miga \.awc-gallery--horizontal\[data-awc-gallery-scroll-ready\] \.awc-container\s*\{[^}]*position:\s*sticky/s);
+  assert.match(styles, /\.theme-miga \.awc-about \.awc-about__badge\s*\{[^}]*color:\s*var\(--miga-ink\)/s);
+  assert.match(styles, /--miga-scroll-stage/);
   assert.match(styles, /\.theme-pure/);
   assert.match(styles, /\.awc-header\[data-awc-scrolled\]/);
   assert.match(styles, /\.awc-hero\s*\{[^}]*text-align:\s*left/s);
